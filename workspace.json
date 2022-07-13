@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {},
+  "dependencies": {
+    "development": [
+      "@nrwl/cli",
+      "@nrwl/react",
+      "@nrwl/workspace",
+      "@types/node",
+      "eslint",
+      "nx",
+      "typescript"
+    ],
+    "required": []
+  }
+}

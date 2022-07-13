@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx nx run-many --target=lint --all --nx-bail --parallel=6
+npx nx run-many --target=build --all --nx-bail --parallel=6
