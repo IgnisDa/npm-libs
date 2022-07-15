@@ -1,8 +1,11 @@
 {
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
-  "version": 2,
-  "projects": {},
+  "projects": {
+    "remix-pagination": "packages/remix-pagination"
+  },
   "dependencies": {
+    "required": [
+      "tslib"
+    ],
     "development": [
       "@nrwl/cli",
       "@nrwl/react",
@@ -11,7 +14,8 @@
       "eslint",
       "nx",
       "typescript"
-    ],
-    "required": []
-  }
+    ]
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2
 }
