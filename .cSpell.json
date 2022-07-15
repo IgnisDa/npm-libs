@@ -8,6 +8,7 @@
         "commitlint",
         "devcontainer",
         "ignisda",
+        "jscutlery",
         "nrwl"
     ],
     // flagWords - list of words to be always considered incorrect

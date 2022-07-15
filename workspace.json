@@ -3,9 +3,7 @@
     "remix-pagination": "packages/remix-pagination"
   },
   "dependencies": {
-    "required": [
-      "tslib"
-    ],
+    "required": ["tslib"],
     "development": [
       "@nrwl/cli",
       "@nrwl/react",
