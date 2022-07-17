@@ -1,4 +1,11 @@
 {
   "name": "@ignisda/remix-pagination",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "dependencies": {
+    "@remix-run/react": "^1.1.1",
+    "clsx": "^1.2.1",
+    "lodash": "^4.17.21",
+    "react-icons": "^4.4.0",
+    "ufo": "^0.8.5"
+  }
 }

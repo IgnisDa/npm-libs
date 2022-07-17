@@ -1,6 +1,16 @@
 {
   "dependencies": {
-    "required": ["core-js", "react", "react-dom", "regenerator-runtime"],
+    "required": [
+      "@remix-run/react",
+      "clsx",
+      "core-js",
+      "lodash",
+      "react",
+      "react-dom",
+      "react-icons",
+      "regenerator-runtime",
+      "ufo"
+    ],
     "development": [
       "@nrwl/eslint-plugin-nx",
       "@nrwl/jest",
@@ -8,6 +18,7 @@
       "@nrwl/web",
       "@testing-library/react",
       "@types/jest",
+      "@types/lodash",
       "@types/react",
       "@types/react-dom",
       "@typescript-eslint/eslint-plugin",
@@ -24,7 +35,6 @@
       "ts-node"
     ]
   },
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/remix-pagination/src",
   "tags": [],
@@ -49,6 +59,12 @@
       },
       "outputs": ["{options.outputPath}"]
     },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
@@ -63,12 +79,6 @@
         "passWithNoTests": true
       },
       "outputs": ["coverage/packages/remix-pagination"]
-    },
-    "deploy": {
-      "executor": "ngx-deploy-npm:deploy",
-      "options": {
-        "access": "public"
-      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
