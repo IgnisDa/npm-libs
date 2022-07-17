@@ -3,8 +3,10 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "postinstall": "remix setup node"
   },
+  "version": "0.0.0",
   "private": true,
   "devDependencies": {
     "@commitlint/cli": "17.0.3",
@@ -18,15 +20,17 @@
     "@nrwl/jest": "14.4.2",
     "@nrwl/linter": "14.4.2",
     "@nrwl/react": "14.4.2",
+    "@nrwl/remix": "14.4.2",
     "@nrwl/web": "14.4.2",
     "@nrwl/workspace": "14.4.2",
+    "@remix-run/dev": "1.6.5",
     "@testing-library/react": "13.3.0",
     "@types/jest": "27.4.1",
     "@types/node": "18.0.3",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
-    "@typescript-eslint/eslint-plugin": "^5.30.6",
-    "@typescript-eslint/parser": "^5.30.6",
+    "@typescript-eslint/eslint-plugin": "5.30.6",
+    "@typescript-eslint/parser": "5.30.6",
     "babel-jest": "27.5.1",
     "commitizen": "4.2.4",
     "eslint": "8.19.0",
@@ -45,20 +49,24 @@
     "ts-node": "~10.8.2",
     "typescript": "4.7.4"
   },
-  "workspaces": [
-    "packages/**"
-  ],
   "dependencies": {
-    "@remix-run/react": "^1.6.5",
-    "@types/lodash": "^4.14.182",
-    "clsx": "^1.2.1",
-    "core-js": "^3.23.4",
-    "lodash": "^4.17.21",
+    "@remix-run/node": "1.6.5",
+    "@remix-run/react": "1.6.5",
+    "@remix-run/serve": "1.6.5",
+    "@types/lodash": "4.14.182",
+    "clsx": "1.2.1",
+    "core-js": "3.23.4",
+    "lodash": "4.17.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0",
+    "react-icons": "4.4.0",
     "regenerator-runtime": "0.13.7",
-    "tslib": "^2.3.0",
-    "ufo": "^0.8.5"
-  }
+    "remix": "1.6.5",
+    "sass": "^1.53.0",
+    "tslib": "2.3.0",
+    "ufo": "0.8.5"
+  },
+  "workspaces": [
+    "packages/**"
+  ]
 }

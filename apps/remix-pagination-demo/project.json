@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "required": [
+      "@remix-run/node",
+      "@remix-run/react",
+      "@remix-run/serve",
+      "react",
+      "react-dom",
+      "remix"
+    ],
+    "development": [
+      "@remix-run/dev",
+      "@types/react",
+      "@types/react-dom"
+    ]
+  },
+  "projectType": "application",
+  "sourceRoot": "apps/remix-pagination-demo",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "pnpm run dev",
+        "cwd": "apps/remix-pagination-demo"
+      }
+    }
+  }
+}

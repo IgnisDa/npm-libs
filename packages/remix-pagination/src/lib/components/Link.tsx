@@ -8,7 +8,6 @@ interface LinkProps {
   children: React.ReactNode;
   to: string;
   label: string;
-  theme: { [key: string]: any };
   current?: boolean;
   disabled?: boolean;
   [key: string]: any;
@@ -18,7 +17,6 @@ export const Link: FC<LinkProps> = ({
   children,
   to,
   label,
-  theme,
   current,
   disabled,
   ...restProps
@@ -26,10 +24,11 @@ export const Link: FC<LinkProps> = ({
   return (
     <RemixLink
       to={to}
-      className={clsx(theme['next-pagination__link'], {
-        [`${theme['next-pagination__link--current']}`]: current,
-        [`${theme['next-pagination__link--disabled']}`]: disabled,
-      })}
+      className={clsx(
+        'next-pagination__link',
+        current && 'next-pagination__link--current',
+        disabled && 'next-pagination__link--disabled'
+      )}
       aria-label={label}
       aria-current={current}
       {...restProps}

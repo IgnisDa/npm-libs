@@ -1,6 +1,7 @@
 {
   "projects": {
-    "remix-pagination": "packages/remix-pagination"
+    "remix-pagination": "packages/remix-pagination",
+    "remix-pagination-demo": "apps/remix-pagination-demo"
   },
   "dependencies": {
     "required": ["tslib"],
