@@ -3,10 +3,17 @@
   "name": "remix-pagination-demo",
   "version": "0.0.0",
   "scripts": {
-    "build": "npx remix build",
-    "dev": "npx remix dev --port 3000",
-    "postinstall": "npx remix setup node",
-    "start": "npx remix-serve build"
+    "build": "run-s build:*",
+    "build:typecheck": "tsc --project tsconfig.json --noEmit",
+    "build:tailwindcss": "npm run generate:css -- --minify",
+    "build:scss": "sass app/styles --style compressed",
+    "build:remix": "cross-env NODE_ENV=production remix build",
+    "dev": "run-p dev:*",
+    "dev:scss": "sass --watch app/styles",
+    "dev:tailwindcss": "npm run generate:css -- --watch",
+    "dev:remix": "remix dev",
+    "dev:routes": "npx routes-gen -d @routes-gen/remix --watch --output app/lib/routes.d.ts",
+    "generate:css": "npx tailwindcss -i app/styles/tailwind.scss -o app/tailwind.css"
   },
   "sideEffects": false
 }

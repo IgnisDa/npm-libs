@@ -10,14 +10,35 @@
     ],
     "development": [
       "@remix-run/dev",
+      "@remix-run/eslint-config",
+      "@routes-gen/remix",
       "@types/react",
-      "@types/react-dom"
+      "@types/react-dom",
+      "cross-env",
+      "npm-run-all",
+      "routes-gen",
+      "sass",
+      "tailwindcss"
     ]
   },
   "projectType": "application",
   "sourceRoot": "apps/remix-pagination-demo",
   "tags": [],
   "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "pnpm run build",
+        "cwd": "apps/remix-pagination-demo"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/remix-pagination-demo/**/*.{ts,tsx,js,jsx}"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
     "serve": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
