@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.5](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.4.4...remix-pagination-0.4.5) (2022-07-18)
+
+
+### Bug Fixes
+
+* **remix-pagination:** specify side effects false ([a9084ff](https://github.com/IgnisDa/npm-libs/commit/a9084ffd7bea7f286354a0892b4e1a821b9065ce))
+
 ## [0.4.4](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.4.3...remix-pagination-0.4.4) (2022-07-18)
 
 ## [0.4.2](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.4.1...remix-pagination-0.4.2) (2022-07-18)
