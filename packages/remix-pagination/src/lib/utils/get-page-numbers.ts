@@ -19,9 +19,8 @@ export const getPageNumbers = ({
   let startPage = 1;
   let endPage = lastPageNumber;
 
-  if (lastPageNumber <= 1) {
-    return []; // Don't show numbers if there's only 1 page
-  }
+  // Don't show numbers if there's only 1 page
+  if (lastPageNumber <= 1) return [];
 
   if (currentPageNumber <= maxPagesBeforeCurrentPage) {
     // near the start
@@ -42,26 +41,23 @@ export const getPageNumbers = ({
     .map((pageNumber) => startPage + pageNumber)
     .filter((pageNumber) => pageNumber <= lastPageNumber && pageNumber > 0);
 
-  if (pageNumbers[0] > 1) {
-    if (pageNumbers[0] <= 2) {
-      pageNumbers = [1, ...pageNumbers];
-    } else {
+  if (pageNumbers[0] > 1)
+    if (pageNumbers[0] <= 2) pageNumbers = [1, ...pageNumbers];
+    else {
       const ellipsis = pageNumbers[0] > 3 ? '...' : 2;
       pageNumbers = [1, ellipsis, ...pageNumbers];
     }
-  }
 
-  if (pageNumbers[pageNumbers.length - 1] !== lastPageNumber) {
-    if (pageNumbers[pageNumbers.length - 1] === lastPageNumber - 1) {
+  if (pageNumbers[pageNumbers.length - 1] !== lastPageNumber)
+    if (pageNumbers[pageNumbers.length - 1] === lastPageNumber - 1)
       pageNumbers = [...pageNumbers, lastPageNumber];
-    } else {
+    else {
       const ellipsis =
         pageNumbers[pageNumbers.length - 1] < lastPageNumber - 2
           ? '...'
           : lastPageNumber - 1;
       pageNumbers = [...pageNumbers, ellipsis, lastPageNumber];
     }
-  }
 
   return pageNumbers;
 };
