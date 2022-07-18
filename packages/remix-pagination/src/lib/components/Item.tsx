@@ -6,6 +6,9 @@ interface ItemProps {
   hellip?: boolean;
 }
 
+/**
+ * Each item display on the pagination uses this component as a wrapper
+ */
 export const Item: FC<ItemProps> = ({ children, hellip = false, prefix }) => {
   return (
     <li

@@ -70,8 +70,7 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "access": "public",
-        "allowEmptyRelease": true
+        "access": "public"
       }
     },
     "lint": {
@@ -92,7 +91,8 @@
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
-        "preset": "conventional"
+        "preset": "conventional",
+        "allowEmptyRelease": true
       }
     }
   }
