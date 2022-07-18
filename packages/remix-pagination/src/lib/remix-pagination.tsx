@@ -35,15 +35,15 @@ export interface RemixPaginationProps {
   /**
    * A prefix that will be applied to all classes applied, can be used for custom styling.
    * For example, if value is `pag`, then `pag__remix-pagination__container` will be
-   * applied to the outer container. This is useful for custom styling. Note: specifying
-   * this option will immediately cause the default styles to break, you will have to take
+   * applied to the outer container (and so on). This is useful for custom styling. Note:
+   * specifying this option will cause the default styles to break; you will have to take
    * care of styling yourself.
    */
   classPrefix?: string;
 
   /**
    * The size of icons. This is passed directly to the underlying `react-icon` component.
-   * Defaults to `1.5em`.
+   * Defaults to `1em`.
    */
   iconSize?: string | number;
 }
