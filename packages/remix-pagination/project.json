@@ -53,6 +53,16 @@
             "glob": "packages/remix-pagination/README.md",
             "input": ".",
             "output": "."
+          },
+          {
+            "glob": "packages/remix-pagination/src",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "LICENSE",
+            "input": ".",
+            "output": "."
           }
         ],
         "compiler": "babel",
@@ -97,7 +107,6 @@
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
-        "allowEmptyRelease": true,
         "preset": "conventional"
       }
     }

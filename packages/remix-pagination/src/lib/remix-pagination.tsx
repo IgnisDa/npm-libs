@@ -19,6 +19,11 @@ export interface RemixPaginationProps {
   total: number;
 
   /**
+   * The number of items that are displayed on one page
+   */
+  size: number;
+
+  /**
    * The query component that indicates the current page, defaults to `page`
    */
   pageQuery?: string;
@@ -27,12 +32,6 @@ export interface RemixPaginationProps {
    * The query component that indicates the size of each page, defaults to `size`
    */
   sizeQuery?: string;
-
-  /**
-   * The number of items that are displayed on one page
-   */
-  size?: number;
-
   /**
    * A prefix that will be applied to all classes applied, can be used for custom styling.
    * For example, if value is `pag`, then `pag__remix-pagination__container` will be
@@ -58,7 +57,7 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
   total,
   pageQuery = 'page',
   sizeQuery = 'size',
-  size = 20,
+  size,
   classPrefix,
   iconSize = '1em',
   ellipsesText,
