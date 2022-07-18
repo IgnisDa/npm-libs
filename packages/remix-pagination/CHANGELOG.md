@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.1](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.4.0...remix-pagination-0.4.1) (2022-07-18)
+
+
+### Bug Fixes
+
+* **remix-pagination:** allow user to customize ellipsesText via prop ([2604d52](https://github.com/IgnisDa/npm-libs/commit/2604d526f75274d2b694edc1e53f3dea8f932548))
+
 ## [0.4.0](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.3.0...remix-pagination-0.4.0) (2022-07-18)
 
 
