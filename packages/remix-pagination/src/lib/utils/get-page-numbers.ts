@@ -3,6 +3,7 @@ interface GetPageNumbersArgs {
   pageSize: number;
   total: number;
   pageNumbersToShow?: number;
+  ellipsesText?: string;
 }
 
 export const getPageNumbers = ({
@@ -10,6 +11,7 @@ export const getPageNumbers = ({
   pageSize,
   total,
   pageNumbersToShow = 3,
+  ellipsesText = '...',
 }: GetPageNumbersArgs) => {
   const lastPageNumber = Math.ceil(total / pageSize);
   const currentPageNumber =
@@ -44,7 +46,7 @@ export const getPageNumbers = ({
   if (pageNumbers[0] > 1)
     if (pageNumbers[0] <= 2) pageNumbers = [1, ...pageNumbers];
     else {
-      const ellipsis = pageNumbers[0] > 3 ? '...' : 2;
+      const ellipsis = pageNumbers[0] > 3 ? ellipsesText : 2;
       pageNumbers = [1, ellipsis, ...pageNumbers];
     }
 
@@ -54,7 +56,7 @@ export const getPageNumbers = ({
     else {
       const ellipsis =
         pageNumbers[pageNumbers.length - 1] < lastPageNumber - 2
-          ? '...'
+          ? ellipsesText
           : lastPageNumber - 1;
       pageNumbers = [...pageNumbers, ellipsis, lastPageNumber];
     }
