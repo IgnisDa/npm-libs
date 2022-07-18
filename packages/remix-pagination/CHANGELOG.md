@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.5.0...remix-pagination-1.0.0) (2022-07-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **remix-pagination:** make size prop required
+
+### Features
+
+* **remix-pagination:** make size prop required ([39e95b2](https://github.com/IgnisDa/npm-libs/commit/39e95b2b74331b2e90e6edf419ec91c0e302f379))
+
 ## [0.5.0](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.4.5...remix-pagination-0.5.0) (2022-07-18)
 
 
