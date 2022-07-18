@@ -3,7 +3,8 @@
 // @ts-nocheck
 import { Link as RemixLink } from '@remix-run/react';
 import clsx from 'clsx';
-import { FC } from 'react';
+
+import type { FC } from 'react';
 
 interface LinkProps {
   children: React.ReactNode;

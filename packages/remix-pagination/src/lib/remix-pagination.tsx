@@ -1,8 +1,7 @@
 import { useSearchParams } from '@remix-run/react';
-import { FC } from 'react';
 import {
-  BsChevronRight as NextIcon,
   BsChevronLeft as PreviousIcon,
+  BsChevronRight as NextIcon,
 } from 'react-icons/bs';
 import { withQuery } from 'ufo';
 
@@ -10,6 +9,8 @@ import { Item as ItemComponent } from './components/Item';
 import { Link as LinkComponent } from './components/Link';
 import { List as ListComponent } from './components/List';
 import { getPageNumbers } from './utils/get-page-numbers';
+
+import type { FC } from 'react';
 
 export interface RemixPaginationProps {
   /**
