@@ -21,6 +21,7 @@
       "tailwindcss"
     ]
   },
+  "implicitDependencies": ["remix-pagination"],
   "projectType": "application",
   "sourceRoot": "apps/remix-pagination-demo",
   "tags": [],

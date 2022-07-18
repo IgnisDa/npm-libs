@@ -1,0 +1,61 @@
+name: Publish
+on:
+  push:
+    branches:
+      - main
+
+env:
+  LIBRARY_NAME: remix-pagination
+
+jobs:
+  pre-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup
+
+      - name: Prerelease Version
+        run: npx nx version ${{ env.LIBRARY_NAME }} --dry-run
+
+  release:
+    environment: production
+    runs-on: ubuntu-latest
+    needs: pre-release
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configure credentials
+        run: |
+          echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}' > ~/.npmrc
+
+      - name: Check npm credentials
+        run: npm whoami
+
+      - uses: ./.github/actions/setup
+
+      - name: git config
+        shell: bash
+        run: |
+          git config user.name "Github Actions"
+          git config user.email "-"
+
+      - name: Tag last-release
+        run: git tag --force last-release
+
+      - name: Build
+        run: |
+          npx nx build:scss ${{ env.LIBRARY_NAME }}
+          npx nx build ${{ env.LIBRARY_NAME }}
+
+      - name: Version
+        run: npx nx version ${{ env.LIBRARY_NAME }}
+
+      - name: Deploy
+        run: npx nx deploy ${{ env.LIBRARY_NAME }}
+
+      - name: Push to protected branch
+        uses: CasperWA/push-protected@v2.10.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          tags: true
