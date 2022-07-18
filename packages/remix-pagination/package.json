@@ -1,6 +1,7 @@
 {
   "name": "@ignisda/remix-pagination",
   "version": "0.4.4",
+  "sideEffects": false,
   "dependencies": {
     "@remix-run/react": "^1.5.0",
     "clsx": "~1.0.0",
