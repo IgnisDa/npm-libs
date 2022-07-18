@@ -39,6 +39,9 @@ jobs:
       - name: Tag last-release
         run: git tag --force last-release
 
+      - name: Build
+        run: npx nx affected --target=build --base=${{ github.event.before }} --head=HEAD
+
       - name: Version
         run: npx nx affected --target=version --base=${{ github.event.before }} --head=HEAD
 
