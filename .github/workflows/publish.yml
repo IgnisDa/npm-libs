@@ -4,9 +4,6 @@ on:
     branches:
       - main
 
-env:
-  LIBRARY_NAME: remix-pagination
-
 jobs:
   pre-release:
     runs-on: ubuntu-latest
@@ -15,7 +12,7 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Prerelease Version
-        run: npx nx version ${{ env.LIBRARY_NAME }} --dry-run
+        run: npx nx affected --target=version --dry-run
 
   release:
     environment: production
@@ -42,16 +39,11 @@ jobs:
       - name: Tag last-release
         run: git tag --force last-release
 
-      - name: Build
-        run: |
-          npx nx build:scss ${{ env.LIBRARY_NAME }}
-          npx nx build ${{ env.LIBRARY_NAME }}
-
       - name: Version
-        run: npx nx version ${{ env.LIBRARY_NAME }}
+        run: npx nx affected --target=version
 
       - name: Deploy
-        run: npx nx deploy ${{ env.LIBRARY_NAME }}
+        run: npx nx affected --target=deploy
 
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2.10.0
