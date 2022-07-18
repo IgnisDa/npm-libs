@@ -6,8 +6,6 @@
     "types": [
       "node"
     ],
-    "module": "ESNext",
-    "target": "ESNext"
   },
   "files": [
     "../../node_modules/@nrwl/react/typings/cssmodule.d.ts",
