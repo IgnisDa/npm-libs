@@ -83,11 +83,11 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
       className={`${prefix}remix-pagination__container`}
       aria-label="pagination"
     >
-      <ListComponent classPrefix={prefix}>
-        <ItemComponent classPrefix={prefix}>
+      <ListComponent prefix={prefix}>
+        <ItemComponent prefix={prefix}>
           {currentPage !== 1 ? (
             <LinkComponent
-              classPrefix={prefix}
+              prefix={prefix}
               to={url(currentPage - 1)}
               label="Previous page"
               isIcon
@@ -99,7 +99,7 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
             </LinkComponent>
           ) : (
             <LinkComponent
-              classPrefix={prefix}
+              prefix={prefix}
               to="#"
               label="No previous page available"
               isIcon
@@ -114,26 +114,17 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
         </ItemComponent>
         {pageNumbers.map((pageNumber, i) =>
           pageNumber === '...' ? (
-            <ItemComponent
-              key={`${pageNumber}${i}`}
-              classPrefix={prefix}
-              hellip
-            >
-              <LinkComponent
-                to="#"
-                classPrefix={prefix}
-                disabled
-                label="ellipsis"
-              >
+            <ItemComponent key={`${pageNumber}${i}`} prefix={prefix} hellip>
+              <LinkComponent to="#" prefix={prefix} disabled label="ellipsis">
                 &hellip;
               </LinkComponent>
             </ItemComponent>
           ) : (
-            <ItemComponent key={pageNumber} classPrefix={prefix}>
+            <ItemComponent key={pageNumber} prefix={prefix}>
               {pageNumber === currentPage ? (
                 <LinkComponent
                   to="#"
-                  classPrefix={prefix}
+                  prefix={prefix}
                   label={`Page ${pageNumber}, current page`}
                   disabled
                   current
@@ -143,7 +134,7 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
               ) : (
                 <LinkComponent
                   to={url(pageNumber)}
-                  classPrefix={prefix}
+                  prefix={prefix}
                   label={`Page ${pageNumber}`}
                 >
                   {pageNumber}
@@ -152,11 +143,11 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
             </ItemComponent>
           )
         )}
-        <ItemComponent classPrefix={prefix}>
+        <ItemComponent prefix={prefix}>
           {!isLastPage ? (
             <LinkComponent
               to={url(currentPage + 1)}
-              classPrefix={prefix}
+              prefix={prefix}
               label="Next page"
               isIcon
             >
@@ -168,7 +159,7 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
           ) : (
             <LinkComponent
               to="#"
-              classPrefix={prefix}
+              prefix={prefix}
               label="No next page available"
               isIcon
               disabled

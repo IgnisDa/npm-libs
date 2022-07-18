@@ -10,7 +10,7 @@ interface LinkProps {
   children: React.ReactNode;
   to: string;
   label: string;
-  classPrefix: string;
+  prefix: string;
   current?: boolean;
   isIcon?: boolean;
   disabled?: boolean;
@@ -21,7 +21,7 @@ export const Link: FC<LinkProps> = ({
   children,
   to,
   label,
-  classPrefix,
+  prefix,
   current,
   isIcon = false,
   disabled,
@@ -32,10 +32,10 @@ export const Link: FC<LinkProps> = ({
       to={to}
       className={clsx(
         !isIcon
-          ? `${classPrefix}remix-pagination__link`
-          : `${classPrefix}remix-pagination__icon-link`,
-        current && `${classPrefix}remix-pagination__link--current`,
-        disabled && `${classPrefix}remix-pagination__link--disabled`
+          ? `${prefix}remix-pagination__link`
+          : `${prefix}remix-pagination__icon-link`,
+        current && `${prefix}remix-pagination__link--current`,
+        disabled && `${prefix}remix-pagination__link--disabled`
       )}
       style={{ pointerEvents: disabled ? 'none' : 'auto' }}
       aria-label={label}
