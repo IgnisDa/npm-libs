@@ -58,7 +58,6 @@
         "compiler": "babel",
         "entryFile": "packages/remix-pagination/src/index.ts",
         "external": ["react/jsx-runtime"],
-        "generateExportsField": true,
         "outputPath": "dist/packages/remix-pagination",
         "project": "packages/remix-pagination/package.json",
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
