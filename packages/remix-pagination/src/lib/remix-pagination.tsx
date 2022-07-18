@@ -67,22 +67,17 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
   const query = Object.fromEntries(params.entries());
 
   const currentPage = Number(query[pageQuery] || 1);
-  const pageSize = Number(query[sizeQuery] || size);
 
-  const isLastPage = currentPage * pageSize >= total;
+  const isLastPage = currentPage * size >= total;
   const pageNumbers = getPageNumbers({
     currentPage,
-    pageSize,
+    pageSize: size,
     total,
     ellipsesText,
   });
 
   const url = (page: string | number) =>
-    withQuery('', {
-      ...query,
-      [pageQuery]: page.toString(),
-      [sizeQuery]: size.toString(),
-    });
+    withQuery('', { ...query, [pageQuery]: page.toString() });
 
   if (pageNumbers.length === 0) return null;
 
