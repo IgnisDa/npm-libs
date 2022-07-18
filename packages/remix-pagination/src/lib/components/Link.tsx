@@ -14,9 +14,11 @@ interface LinkProps {
   current?: boolean;
   isIcon?: boolean;
   disabled?: boolean;
-  [key: string]: unknown;
 }
 
+/**
+ * This component is used to display anchor tags using the inbuilt Remix Link.
+ */
 export const Link: FC<LinkProps> = ({
   children,
   to,
@@ -25,7 +27,6 @@ export const Link: FC<LinkProps> = ({
   current,
   isIcon = false,
   disabled,
-  ...restProps
 }) => {
   return (
     <RemixLink
@@ -41,7 +42,6 @@ export const Link: FC<LinkProps> = ({
       aria-label={label}
       aria-current={current}
       aria-disabled={disabled}
-      {...restProps}
     >
       {children}
     </RemixLink>
