@@ -1,19 +1,20 @@
 # Remix Pagination
 
-> pagination component for [Remix](Remix)
+Pagination component for [Remix](Remix) apps.
 
 ## Table of contents
 
 - [Remix Pagination](#remix-pagination)
   - [Table of contents](#table-of-contents)
   - [Why use this pagination module?](#why-use-this-pagination-module)
-  - [Install](#install)
+  - [Installing](#installing)
   - [Usage](#usage)
   - [Theming](#theming)
-  - [Contribute](#contribute)
+  - [Contributing](#contributing)
     - [Setup](#setup)
-  - [Development](#development)
-  - [Publishing](#publishing)
+    - [Development](#development)
+    - [Publishing](#publishing)
+  - [Acknowledgements](#acknowledgements)
   - [License](#license)
 
 ## Why use this pagination module?
@@ -27,10 +28,11 @@
   handled for you.
 - **Works with Remix.** Integrated with the Remix router.
 
-## Install
+## Installing
 
 ```bash
-npm install --save @ignisda/remix-pagination
+pnpm install @ignisda/remix-pagination
+# or the corresponding install command of your favorite package manager
 ```
 
 ## Usage
@@ -51,13 +53,17 @@ export default function () {
 }
 ```
 
-You will need to import the CSS, either in your `_app.js`, or in your Sass build.
+You will need to import the CSS like you would in any Remix app as explained
+[here](https://remix.run/docs/en/v1/guides/styling).
 
-```jsx
-import '@ignisda/remix-pagination/index.css';
+```tsx
+import { styles } from '@ignisda/remix-pagination';
+
+export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }];
 ```
 
-When used, the pagination component will reload the same route with added pagination query params.
+When used, the pagination component will reload the same route with added pagination query
+params.
 
 - `page` for the page number the user is on.
 - `size` for the number of results per page.
@@ -66,15 +72,13 @@ e.g. ?page=4&size=20
 
 The **default page** is 1.
 
-You'll need to load the actual data from your API yourself.
-
 ## Theming
 
 All components have the class `remix-pagination__$component` applied to them. This can be
 changed via the `classPrefix` prop. You can see an example
-[here](apps/remix-pagination-demo/app/routes/index.tsx).
+[here](https://github.com/IgnisDa/npm-libs/blob/39e95b2b74331b2e90e6edf419ec91c0e302f379/apps/remix-pagination-demo/app/routes/index.tsx#L29).
 
-## Contribute
+## Contributing
 
 This package was created with [NX](nx). You will need it installed to run this
 project.
@@ -83,7 +87,7 @@ project.
 
 To get set up you'll need to run `pnpm install`
 
-## Development
+### Development
 
 In the root folder, run `npx nx serve remix-pagination-demo`. Then head over to
 `http://localhost:3000` to see the example running.
@@ -92,10 +96,16 @@ Note: You will have to restart the dev server every time you make any changes to
 `packages/remix-pagination` because Remix does not watch for files outside it's project. I
 have not yet figured out how to fix this.
 
-## Publishing
+### Publishing
 
 This project is automatically published using a combination of [NX](nx), [Conventional
-Commits](conventional commits) and [Github Actions](.github/workflows/publish.yml).
+Commits](conventional-commits) and [Github
+Actions](https://github.com/IgnisDa/npm-libs/blob/39e95b2b74331b2e90e6edf419ec91c0e302f379/.github/workflows/publish.yml).
+
+## Acknowledgements
+
+A lot of the code has been inspired from
+[@etchteam/next-pagination](https://github.com/etchteam/next-pagination).
 
 ## License
 
@@ -103,4 +113,4 @@ MIT © [IgnisDa](https://github.com/ignisda)
 
 [remix]: https://remix.run/
 [nx]: https://nx.dev/
-[conventional commits]: https://www.conventionalcommits.org/en/v1.0.0/
+[conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
