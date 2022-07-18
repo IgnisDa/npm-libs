@@ -47,6 +47,11 @@ export interface RemixPaginationProps {
    * Defaults to `1em`.
    */
   iconSize?: string | number;
+
+  /**
+   * The text to use for ellipses. Defaults to `...`
+   */
+  ellipsesText?: string;
 }
 
 export const RemixPagination: FC<RemixPaginationProps> = ({
@@ -56,6 +61,7 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
   size = 20,
   classPrefix,
   iconSize = '1em',
+  ellipsesText,
 }) => {
   const [params] = useSearchParams();
 
@@ -65,7 +71,12 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
   const pageSize = Number(query[sizeQuery] || size);
 
   const isLastPage = currentPage * pageSize >= total;
-  const pageNumbers = getPageNumbers({ currentPage, pageSize, total });
+  const pageNumbers = getPageNumbers({
+    currentPage,
+    pageSize,
+    total,
+    ellipsesText,
+  });
 
   const url = (page: string | number) =>
     withQuery('', {
