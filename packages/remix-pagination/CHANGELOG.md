@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.0](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.3.0...remix-pagination-0.4.0) (2022-07-18)
+
+
+### Features
+
+* **remix-pagination:** add ellipsesText option for utility ([9767503](https://github.com/IgnisDa/npm-libs/commit/976750391a19bea18d0f232f1c51fbd1f9e0853d))
+
+
+### Bug Fixes
+
+* **remix-pagination:** remove useless braces in utility ([143fb0e](https://github.com/IgnisDa/npm-libs/commit/143fb0e12a6111d116cbeda9bccf9610526b677e))
+* **remix-pagination:** use es2020 to compile project ([85f6bb8](https://github.com/IgnisDa/npm-libs/commit/85f6bb8a176046c89dcd42d5205b5475df88e879))
+
 ## [0.3.0](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.2.0...remix-pagination-0.3.0) (2022-07-18)
 
 
