@@ -41,6 +41,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/web:rollup",
+      "dependsOn": [{ "projects": "self", "target": "build:scss" }],
       "options": {
         "assets": [
           {
