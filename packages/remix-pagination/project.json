@@ -49,6 +49,7 @@
             "output": "."
           }
         ],
+        "generateExportsField": true,
         "compiler": "babel",
         "entryFile": "packages/remix-pagination/src/index.ts",
         "external": ["react/jsx-runtime"],
