@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.2.0...remix-pagination-0.3.0) (2022-07-18)
+
+
+### Features
+
+* **remix-pagination:** add more details about item component ([81603db](https://github.com/IgnisDa/npm-libs/commit/81603dbd1e86c82a2ce22757b223538b5c23036b))
+
+
+### Bug Fixes
+
+* **remix-pagination:** add information for list component ([8c9e84f](https://github.com/IgnisDa/npm-libs/commit/8c9e84f7ff5a0608dd177be224f8768b7a31e9c0))
+* **remix-pagination:** change prop name for class prefix ([a8f7062](https://github.com/IgnisDa/npm-libs/commit/a8f7062168760b3169fcb3844dbcd4aaf3d4ae88))
+* **remix-pagination:** remove useless rest props ([9d7e4b0](https://github.com/IgnisDa/npm-libs/commit/9d7e4b0593838fa221938e5d35f88d28d0852570))
+* **remix-pagination:** use correct module in lib file ([7b5f67d](https://github.com/IgnisDa/npm-libs/commit/7b5f67d7680d3308bf2e1a9dd57c09b0a645edd4))
+
 ## [0.2.1](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.2.0...remix-pagination-0.2.1) (2022-07-18)
 
 
