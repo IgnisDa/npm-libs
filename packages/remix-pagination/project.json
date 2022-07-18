@@ -4,7 +4,6 @@
       "@remix-run/react",
       "clsx",
       "core-js",
-      "lodash",
       "react",
       "react-dom",
       "react-icons",
@@ -31,6 +30,7 @@
       "eslint-plugin-react-hooks",
       "jest",
       "react-test-renderer",
+      "sass",
       "ts-jest",
       "ts-node"
     ]
@@ -51,13 +51,24 @@
         ],
         "compiler": "babel",
         "entryFile": "packages/remix-pagination/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": [
+          "react/jsx-runtime"
+        ],
         "outputPath": "dist/packages/remix-pagination",
         "project": "packages/remix-pagination/package.json",
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "tsConfig": "packages/remix-pagination/tsconfig.lib.json"
       },
-      "outputs": ["{options.outputPath}"]
+      "outputs": [
+        "{options.outputPath}"
+      ]
+    },
+    "build:scss": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "sass ./src",
+        "cwd": "packages/remix-pagination"
+      }
     },
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
@@ -68,9 +79,13 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["packages/remix-pagination/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "packages/remix-pagination/**/*.{ts,tsx,js,jsx}"
+        ]
       },
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
@@ -78,7 +93,9 @@
         "jestConfig": "packages/remix-pagination/jest.config.ts",
         "passWithNoTests": true
       },
-      "outputs": ["coverage/packages/remix-pagination"]
+      "outputs": [
+        "coverage/packages/remix-pagination"
+      ]
     },
     "version": {
       "executor": "@jscutlery/semver:version",

@@ -2,8 +2,9 @@ import { FC } from 'react';
 
 interface ListProps {
   children: React.ReactNode;
+  classPrefix: string;
 }
 
-export const List: FC<ListProps> = ({ children }) => {
-  return <ul className={'next-pagination__list'}>{children}</ul>;
+export const List: FC<ListProps> = ({ children, classPrefix }) => {
+  return <ul className={`${classPrefix}remix-pagination__list`}>{children}</ul>;
 };
