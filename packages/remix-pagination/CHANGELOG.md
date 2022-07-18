@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.1](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.2.0...remix-pagination-0.2.1) (2022-07-18)
+
+
+### Bug Fixes
+
+* **remix-pagination:** change prop name for class prefix ([a8f7062](https://github.com/IgnisDa/npm-libs/commit/a8f7062168760b3169fcb3844dbcd4aaf3d4ae88))
+
 ## [0.2.0](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-0.1.0...remix-pagination-0.2.0) (2022-07-18)
 
 

@@ -40,4 +40,4 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run: pnpm install --frozen-lockfile --prefer-offline
+      run: pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
