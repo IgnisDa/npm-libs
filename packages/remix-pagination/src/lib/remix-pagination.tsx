@@ -29,10 +29,6 @@ export interface RemixPaginationProps {
   pageQuery?: string;
 
   /**
-   * The query component that indicates the size of each page, defaults to `size`
-   */
-  sizeQuery?: string;
-  /**
    * A prefix that will be applied to all classes applied, can be used for custom styling.
    * For example, if value is `pag`, then `pag__remix-pagination__container` will be
    * applied to the outer container (and so on). This is useful for custom styling. Note:
@@ -56,7 +52,6 @@ export interface RemixPaginationProps {
 export const RemixPagination: FC<RemixPaginationProps> = ({
   total,
   pageQuery = 'page',
-  sizeQuery = 'size',
   size,
   classPrefix,
   iconSize = '1em',
