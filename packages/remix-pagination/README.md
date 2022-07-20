@@ -8,6 +8,7 @@ Pagination component for [Remix](Remix) apps.
   - [Table of contents](#table-of-contents)
   - [Why use this pagination module?](#why-use-this-pagination-module)
   - [Installing](#installing)
+  - [Example](#example)
   - [Usage](#usage)
   - [Theming](#theming)
   - [Contributing](#contributing)
@@ -34,6 +35,19 @@ Pagination component for [Remix](Remix) apps.
 pnpm install @ignisda/remix-pagination
 # or the corresponding install command of your favorite package manager
 ```
+
+## Example
+
+The [remix-pagination-demo](../../apps/remix-pagination-demo) app contains an example
+using the [Pokemon](https://graphql-pokeapi.graphcdn.app/) Graphql API.
+
+You can run it using:
+
+```bash
+npx nx serve remix-pagination-demo
+```
+
+Then visit `http://localhost:3000` to see the example running.
 
 ## Usage
 
