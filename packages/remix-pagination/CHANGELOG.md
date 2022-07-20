@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.0](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-1.0.2...remix-pagination-1.1.0) (2022-07-20)
+
+
+### Features
+
+* **remix-pagination-demo:** add pokemon list page demo ([7ba4da9](https://github.com/IgnisDa/npm-libs/commit/7ba4da9dcde3aa06e96b0a01e571583dd79922e5))
+
 ## [1.0.2](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-1.0.1...remix-pagination-1.0.2) (2022-07-18)
 
 
