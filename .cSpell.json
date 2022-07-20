@@ -7,7 +7,9 @@
     "words": [
         "Choudhuri",
         "clsx",
+        "codegen",
         "commitlint",
+        "dedup",
         "devcontainer",
         "Diptesh",
         "hellip",
@@ -15,7 +17,8 @@
         "jscutlery",
         "nrwl",
         "pnpm",
-        "tailwindcss"
+        "tailwindcss",
+        "urql"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.

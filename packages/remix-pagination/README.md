@@ -66,9 +66,6 @@ When used, the pagination component will reload the same route with added pagina
 params.
 
 - `page` for the page number the user is on.
-- `size` for the number of results per page.
-
-e.g. ?page=4&size=20
 
 The **default page** is 1.
 

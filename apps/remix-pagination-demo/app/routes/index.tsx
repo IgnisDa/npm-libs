@@ -3,6 +3,8 @@ import { RemixPagination, styles } from '@ignisda/remix-pagination';
 import indexPageStyles from '../styles/pages/index.css';
 
 import type { LinksFunction } from '@remix-run/node';
+import { Link } from '@remix-run/react';
+import { route } from 'routes-gen';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: styles },
@@ -31,9 +33,9 @@ export default function Index() {
   return (
     <div className="min-h-screen p-8 lg:p-20 flex">
       <div className="w-full space-y-14">
-        <div className="text-gray-800 font-serif text-4xl underline lg:text-5xl text-center">
+        <h1 className="text-gray-800 font-serif text-4xl underline lg:text-5xl text-center">
           Remix Pagination Demo
-        </div>
+        </h1>
         <div className="space-y-10">
           {examples.map((e, idx) => (
             <div key={idx} className="space-y-3">
@@ -41,6 +43,10 @@ export default function Index() {
               {e.display}
             </div>
           ))}
+        </div>
+        <div className="text-center">
+          <h2 className="text-3xl">Example Page</h2>
+          <Link to={route('/pokemon')}>Pokemon</Link>
         </div>
       </div>
     </div>

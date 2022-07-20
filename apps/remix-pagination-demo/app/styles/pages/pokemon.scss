@@ -1,0 +1,27 @@
+.pokemon__remix-pagination__container {
+  .pokemon__remix-pagination__list {
+    display: flex;
+    align-items: center;
+  }
+  .pokemon__remix-pagination__icon {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .pokemon__remix-pagination__link--disabled
+    > .pokemon__remix-pagination__icon {
+    fill: #bfbfbf;
+  }
+  .pokemon__remix-pagination__link {
+    margin-right: 4px;
+    margin-left: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .pokemon__remix-pagination__link--current {
+    background-color: #ffdcdc;
+    color: #d50e0e;
+    border-radius: 5px;
+  }
+}

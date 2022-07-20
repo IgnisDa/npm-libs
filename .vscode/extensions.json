@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "firsttris.vscode-jest-runner",
     "dbaeumer.vscode-eslint",
-    "rbbit.typescript-hero"
+    "rbbit.typescript-hero",
+    "GraphQL.vscode-graphql"
   ]
 }

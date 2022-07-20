@@ -1,0 +1,16 @@
+hooks:
+  afterOneFileWrite:
+    - prettier --write
+overwrite: true
+schema: 'https://graphql-pokeapi.graphcdn.app/'
+generates:
+  apps/remix-pagination-demo/app/lib/graphql-generated.ts:
+    documents: 'apps/remix-pagination-demo/**/*.{ts,tsx}'
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-generic-sdk':
+          gqlImport: urql#gql
+      - 'add':
+          content: >
+            /* eslint-disable */

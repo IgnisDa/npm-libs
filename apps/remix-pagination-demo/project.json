@@ -4,11 +4,22 @@
       "@remix-run/node",
       "@remix-run/react",
       "@remix-run/serve",
+      "graphql",
       "react",
       "react-dom",
-      "remix"
+      "remix",
+      "remix-image",
+      "urql",
+      "urql-generic-requester"
     ],
     "development": [
+      "@graphql-codegen/add",
+      "@graphql-codegen/cli",
+      "@graphql-codegen/introspection",
+      "@graphql-codegen/typed-document-node",
+      "@graphql-codegen/typescript",
+      "@graphql-codegen/typescript-generic-sdk",
+      "@graphql-codegen/typescript-operations",
       "@remix-run/dev",
       "@remix-run/eslint-config",
       "@routes-gen/remix",
