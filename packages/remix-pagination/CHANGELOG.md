@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.2](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-1.1.1...remix-pagination-1.1.2) (2022-07-20)
+
+
+### Bug Fixes
+
+* **remix-pagination:** remove useless component prop ([c2ea79e](https://github.com/IgnisDa/npm-libs/commit/c2ea79e04aaaa7c7a5f04c7f16e25b102e9e84ee))
+
 ## [1.1.1](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-1.1.0...remix-pagination-1.1.1) (2022-07-20)
 
 ## [1.1.0](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-1.0.2...remix-pagination-1.1.0) (2022-07-20)
