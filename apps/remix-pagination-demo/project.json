@@ -9,6 +9,7 @@
       "react-dom",
       "remix",
       "remix-image",
+      "routes-gen",
       "urql",
       "urql-generic-requester"
     ],
@@ -27,7 +28,6 @@
       "@types/react-dom",
       "cross-env",
       "npm-run-all",
-      "routes-gen",
       "sass",
       "tailwindcss"
     ]
@@ -38,6 +38,12 @@
   "tags": [],
   "targets": {
     "build": {
+      "dependsOn": [
+        {
+          "projects": "dependencies",
+          "target": "build"
+        }
+      ],
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "command": "pnpm run build",
