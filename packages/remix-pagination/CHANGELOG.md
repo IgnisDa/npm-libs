@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.1](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-1.1.0...remix-pagination-1.1.1) (2022-07-20)
+
 ## [1.1.0](https://github.com/IgnisDa/npm-libs/compare/remix-pagination-1.0.2...remix-pagination-1.1.0) (2022-07-20)
 
 
