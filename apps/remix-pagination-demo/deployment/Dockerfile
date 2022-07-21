@@ -21,6 +21,5 @@ COPY --from=builder /app/apps/${PROJECT_NAME}/deployment/* ./
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 ENV NODE_ENV=production
-EXPOSE 3000
 
 CMD /app/start.sh
