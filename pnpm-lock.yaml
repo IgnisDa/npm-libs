@@ -46,12 +46,14 @@ importers:
       '@types/node': 18.0.3
       '@types/react': 18.0.14
       '@types/react-dom': 18.0.5
-      '@types/stream-chain': ^2.0.1
-      '@types/stream-json': ^1.7.2
+      '@types/semver': 7.3.10
+      '@types/stream-chain': 2.0.1
+      '@types/stream-json': 1.7.2
       '@typescript-eslint/eslint-plugin': 5.30.6
       '@typescript-eslint/parser': 5.30.6
+      axios: 0.27.2
       babel-jest: 27.5.1
-      chalk: ^4.1.2
+      chalk: 4.1.2
       clsx: 1.2.1
       commitizen: 4.2.4
       core-js: 3.23.4
@@ -80,8 +82,9 @@ importers:
       remix-image: 1.3.2
       routes-gen: 0.5.1
       sass: 1.53.0
-      stream-chain: ^2.2.5
-      stream-json: ^1.7.4
+      semver: 7.3.7
+      stream-chain: 2.2.5
+      stream-json: 1.7.4
       tailwindcss: 3.1.6
       ts-jest: 27.1.4
       ts-node: 10.8.2
@@ -155,10 +158,12 @@ importers:
       '@types/node': 18.0.3
       '@types/react': 18.0.14
       '@types/react-dom': 18.0.5
+      '@types/semver': 7.3.10
       '@types/stream-chain': 2.0.1
       '@types/stream-json': 1.7.2
       '@typescript-eslint/eslint-plugin': 5.30.6_2vt5mtrqleafs33qg2bhpmbaqm
       '@typescript-eslint/parser': 5.30.6_4x5o4skxv6sl53vpwefgt23khm
+      axios: 0.27.2
       babel-jest: 27.5.1
       commitizen: 4.2.4_@swc+core@1.2.173
       eslint: 8.19.0
@@ -175,6 +180,7 @@ importers:
       nx: 14.5.1_zj6pvowc7ira3d65lsk73mx5jy
       prettier: 2.7.1
       react-test-renderer: 18.2.0_react@18.2.0
+      semver: 7.3.7
       ts-jest: 27.1.4_4vac53qkbh3p4hrqxdjprq7yr4
       ts-node: 10.8.2_xad4uhq2vp4delz7xbj5xh2h2q
       typescript: 4.7.4
@@ -4594,6 +4600,10 @@ packages:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
     dev: true
 
+  /@types/semver/7.3.10:
+    resolution: {integrity: sha512-zsv3fsC7S84NN6nPK06u79oWgrPVd0NvOyqgghV1haPaFcVxIrP4DLomRwGAXk0ui4HZA7mOcSFL98sMVW9viw==}
+    dev: true
+
   /@types/serve-index/1.9.1:
     resolution: {integrity: sha512-d/Hs3nWDxNL2xAczmOVZNj92YZCS6RGxfBPjKzuu/XirCgXdpKEb88dYNbrYGint6IVWLNP+yonwVAuRC0T2Dg==}
     dependencies:
@@ -5304,6 +5314,15 @@ packages:
   /axe-core/4.4.2:
     resolution: {integrity: sha512-LVAaGp/wkkgYJcjmHsoKx4juT1aQvJyPcW09MLCjVTh3V2cc6PnyempiLMNH5iMdfIX/zdbjUx2KDjMLCTdPeA==}
     engines: {node: '>=12'}
+
+  /axios/0.27.2:
+    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
+    dependencies:
+      follow-redirects: 1.15.1
+      form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
+    dev: true
 
   /axobject-query/2.2.0:
     resolution: {integrity: sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==}
@@ -8528,6 +8547,15 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
+
+  /form-data/4.0.0:
+    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
+    engines: {node: '>= 6'}
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.35
+    dev: true
 
   /format/0.2.2:
     resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}

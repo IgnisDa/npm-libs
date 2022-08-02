@@ -37,7 +37,7 @@
   },
   "projectType": "library",
   "sourceRoot": "packages/remix-pagination/src",
-  "tags": [],
+  "tags": ["publish-npm"],
   "targets": {
     "build": {
       "dependsOn": [
@@ -107,8 +107,7 @@
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
-        "preset": "conventional",
-        "allowEmptyRelease": true
+        "preset": "conventional"
       }
     }
   }

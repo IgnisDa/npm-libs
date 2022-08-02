@@ -17,7 +17,7 @@
   },
   "projectType": "library",
   "sourceRoot": "packages/nx-rust/src",
-  "tags": [],
+  "tags": ["publish-npm"],
   "targets": {
     "build": {
       "executor": "@nrwl/js:swc",
@@ -51,6 +51,12 @@
       },
       "outputs": ["{options.outputPath}"]
     },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
@@ -74,8 +80,7 @@
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
-        "preset": "conventional",
-        "allowEmptyRelease": true
+        "preset": "conventional"
       }
     }
   }
