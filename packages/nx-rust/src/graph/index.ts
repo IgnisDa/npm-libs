@@ -51,38 +51,41 @@ export async function processProjectGraph(
   ]);
   const packages = await pipelineToObject(packagesPipeline);
   const builder = new ProjectGraphBuilder(graph);
-  workspace_members
+  const filteredWorkspaceMembers = workspace_members
     .map((id) => packages.find((pkg) => pkg.id === id))
-    .filter((pkg) => Object.keys(ctx.fileMap).includes(pkg.name))
-    .forEach((pkg) => {
-      pkg.dependencies.forEach((dep) => {
-        const depName = dep.source == null ? dep.name : `cargo:${dep.name}`;
+    .filter((pkg) => Object.keys(ctx.fileMap).includes(pkg.name));
 
-        if (!Object.keys(graph.nodes).includes(depName)) {
-          const depPkg = packages.find((pkg) =>
-            pkg.source.startsWith(dep.source)
+  for (const pkg of filteredWorkspaceMembers) {
+    for (const dep of pkg.dependencies) {
+      // it is a cargo dependency, should be skipped
+      if (!dep.path) continue;
+      const depName = dep.name;
+      if (!Object.keys(graph.nodes).includes(depName)) {
+        const depPkg = packages.find((pkg) =>
+          pkg.source.startsWith(dep.source)
+        );
+        if (!depPkg) {
+          console.log(
+            `${chalk.yellowBright.bold.inverse(
+              ' WARN '
+            )} Failed to find package for dependency:`
           );
-          if (!depPkg) {
-            console.log(
-              `${chalk.yellowBright.bold.inverse(
-                ' WARN '
-              )} Failed to find package for dependency:`
-            );
-            console.log(inspect(dep));
-            return;
-          }
-          builder.addNode({
-            name: depName,
-            type: 'cargo' as any,
-            data: {
-              version: depPkg.version,
-              packageName: depPkg.name,
-              files: [],
-            },
-          });
+          console.log(inspect(dep));
+          return;
         }
-        builder.addImplicitDependency(pkg.name, depName);
-      });
-    });
+        builder.addNode({
+          name: depName,
+          type: 'cargo' as any,
+          data: {
+            version: depPkg.version,
+            packageName: depPkg.name,
+            files: [],
+          },
+        });
+      }
+      builder.addImplicitDependency(pkg.name, depName);
+    }
+  }
+
   return builder.getUpdatedProjectGraph();
 }
