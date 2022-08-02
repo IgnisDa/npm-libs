@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0](https://github.com/IgnisDa/npm-libs/compare/nx-rust-0.3.0...nx-rust-1.0.0) (2022-08-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nx-rust:** Initial release.
+
+### Documentation
+
+* **nx-rust:** add correct usage instructions ([91373e4](https://github.com/IgnisDa/npm-libs/commit/91373e4e4e2c10ba6398f454df188207c29f5230))
+
 ## [0.2.1](https://github.com/IgnisDa/npm-libs/compare/nx-rust-0.2.0...nx-rust-0.2.1) (2022-08-02)
 
 ## [0.2.0](https://github.com/IgnisDa/npm-libs/compare/nx-rust-0.1.0...nx-rust-0.2.0) (2022-08-02)
