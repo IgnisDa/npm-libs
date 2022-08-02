@@ -5,3 +5,5 @@ for project in "nx-rust" "remix-pagination"; do
     status=$?
     [ $status -eq 1 ] && pnpm nx deploy "${project}"
 done
+
+exit 0
