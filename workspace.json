@@ -7,6 +7,7 @@
     "required": ["tslib"],
     "development": [
       "@nrwl/cli",
+      "@nrwl/nx-plugin",
       "@nrwl/react",
       "@nrwl/workspace",
       "@types/node",
