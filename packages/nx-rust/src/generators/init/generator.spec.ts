@@ -1,6 +1,7 @@
 import { Tree } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
+import { CARGO_TOML, PLUGIN_NAME } from '../../common/constants';
 import runGenerator from './generator';
 
 describe('init generator', () => {
@@ -14,7 +15,7 @@ describe('init generator', () => {
     await runGenerator(appTree, {});
     const changes = appTree.listChanges();
 
-    const cargoToml = changes.find((c) => c.path === 'Cargo.toml');
+    const cargoToml = changes.find((c) => c.path === CARGO_TOML);
     const toolchainToml = changes.find((c) => c.path === 'rust-toolchain.toml');
     const rustFmtToml = changes.find((c) => c.path === 'rustfmt.toml');
 
@@ -44,6 +45,6 @@ describe('init generator', () => {
     expect(nxJson).toBeTruthy();
 
     const json = JSON.parse(nxJson.content.toString());
-    expect(json.plugins).toContain('@ignisda/nx-rust');
+    expect(json.plugins).toContain(PLUGIN_NAME);
   });
 });

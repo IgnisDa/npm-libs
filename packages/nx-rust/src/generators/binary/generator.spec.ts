@@ -1,5 +1,7 @@
 import { Tree } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+
+import { CARGO_TOML } from '../../common/constants';
 import runGenerator from './generator';
 
 describe('binary generator', () => {
@@ -17,7 +19,7 @@ describe('binary generator', () => {
     it('should create the correct file structure', () => {
       const changes = appTree.listChanges();
       const cargoToml = changes.find(
-        (c) => c.path === 'apps/my-app/Cargo.toml'
+        (c) => c.path === `apps/my-app/${CARGO_TOML}`
       );
       const libRs = changes.find((c) => c.path === 'apps/my-app/src/main.rs');
 
@@ -28,7 +30,7 @@ describe('binary generator', () => {
     it('should populate project files with the correct content', () => {
       const changes = appTree.listChanges();
       const cargoContent = changes
-        .find((c) => c.path === 'apps/my-app/Cargo.toml')
+        .find((c) => c.path === `apps/my-app/${CARGO_TOML}`)
         .content.toString();
 
       expect(cargoContent).toContain(`name = "my-app"`);
@@ -38,7 +40,7 @@ describe('binary generator', () => {
     it('should add project to workspace members', () => {
       const changes = appTree.listChanges();
       const members = changes
-        .find((c) => c.path === 'Cargo.toml')
+        .find((c) => c.path === CARGO_TOML)
         .content.toString();
 
       expect(members).toContain(`"apps/my-app"`);
@@ -53,7 +55,7 @@ describe('binary generator', () => {
     it('should create the correct file structure', () => {
       const changes = appTree.listChanges();
       const cargoToml = changes.find(
-        (c) => c.path === 'apps/my_app/Cargo.toml'
+        (c) => c.path === `apps/my_app/${CARGO_TOML}`
       );
       const libRs = changes.find((c) => c.path === 'apps/my_app/src/main.rs');
 
@@ -64,7 +66,7 @@ describe('binary generator', () => {
     it('should populate project files with the correct content', () => {
       const changes = appTree.listChanges();
       const cargoContent = changes
-        .find((c) => c.path === 'apps/my_app/Cargo.toml')
+        .find((c) => c.path === `apps/my_app/${CARGO_TOML}`)
         .content.toString();
 
       expect(cargoContent).toContain(`name = "my_app"`);
@@ -74,7 +76,7 @@ describe('binary generator', () => {
     it('should add project to workspace members', () => {
       const changes = appTree.listChanges();
       const members = changes
-        .find((c) => c.path === 'Cargo.toml')
+        .find((c) => c.path === CARGO_TOML)
         .content.toString();
 
       expect(members).toContain(`"apps/my_app"`);

@@ -2,6 +2,7 @@ import * as nrwl from '@nrwl/devkit';
 import { ExecutorContext, Tree } from '@nrwl/devkit';
 import * as chalk from 'chalk';
 import * as cp from 'child_process';
+import { CARGO_TOML } from './constants';
 
 import {
   CompilationOptions,
@@ -100,7 +101,7 @@ export function normalizeGeneratorOptions<T extends GeneratorCLIOptions>(
 
 export function updateWorkspaceMembers(host: Tree, opts: GeneratorOptions) {
   const updated = host
-    .read('Cargo.toml')
+    .read(CARGO_TOML)
     .toString()
     .split('\n')
     .reduce((acc, line) => {
@@ -123,7 +124,7 @@ export function updateWorkspaceMembers(host: Tree, opts: GeneratorOptions) {
     }, [] as string[])
     .join('\n');
 
-  host.write('Cargo.toml', updated);
+  host.write(CARGO_TOML, updated);
 }
 
 export function parseCargoArgs(

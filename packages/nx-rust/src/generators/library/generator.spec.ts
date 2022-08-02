@@ -1,5 +1,6 @@
 import { Tree } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { CARGO_TOML } from '../../common/constants';
 import runGenerator from './generator';
 
 describe('library generator', () => {
@@ -17,7 +18,7 @@ describe('library generator', () => {
     it('should create the correct file structure', () => {
       const changes = appTree.listChanges();
       const cargoToml = changes.find(
-        (c) => c.path === 'libs/my-library/Cargo.toml'
+        (c) => c.path === `libs/my-library/${CARGO_TOML}`
       );
       const libRs = changes.find(
         (c) => c.path === 'libs/my-library/src/lib.rs'
@@ -30,7 +31,7 @@ describe('library generator', () => {
     it('should populate project files with the correct content', () => {
       const changes = appTree.listChanges();
       const cargoContent = changes
-        .find((c) => c.path === 'libs/my-library/Cargo.toml')
+        .find((c) => c.path === `libs/my-library/${CARGO_TOML}`)
         .content.toString();
 
       expect(cargoContent).toContain(`name = "my-library"`);
@@ -50,7 +51,7 @@ describe('library generator', () => {
     it('should add project to workspace members', () => {
       const changes = appTree.listChanges();
       const members = changes
-        .find((c) => c.path === 'Cargo.toml')
+        .find((c) => c.path === CARGO_TOML)
         .content.toString();
 
       expect(members).toContain(`"libs/my-library"`);
@@ -66,7 +67,7 @@ describe('library generator', () => {
     it('should create the correct file structure', () => {
       const changes = appTree.listChanges();
       const cargoToml = changes.find(
-        (c) => c.path === 'libs/my_library/Cargo.toml'
+        (c) => c.path === `libs/my_library/${CARGO_TOML}`
       );
       const libRs = changes.find(
         (c) => c.path === 'libs/my_library/src/lib.rs'
@@ -79,7 +80,7 @@ describe('library generator', () => {
     it('should populate project files with the correct content', () => {
       const changes = appTree.listChanges();
       const cargoContent = changes
-        .find((c) => c.path === 'libs/my_library/Cargo.toml')
+        .find((c) => c.path === `libs/my_library/${CARGO_TOML}`)
         .content.toString();
 
       expect(cargoContent).toContain(`name = "my_library"`);
@@ -99,7 +100,7 @@ describe('library generator', () => {
     it('should add project to workspace members', () => {
       const changes = appTree.listChanges();
       const members = changes
-        .find((c) => c.path === 'Cargo.toml')
+        .find((c) => c.path === CARGO_TOML)
         .content.toString();
 
       expect(members).toContain(`"libs/my_library"`);

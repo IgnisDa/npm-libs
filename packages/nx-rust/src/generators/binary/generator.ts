@@ -7,6 +7,7 @@ import {
   normalizeGeneratorOptions,
   updateWorkspaceMembers,
 } from '../../common';
+import { CARGO_TOML, PLUGIN_NAME } from '../../common/constants';
 import cargoInit from '../init/generator';
 import CLIOptions from './schema';
 
@@ -22,7 +23,7 @@ export default async function (host: Tree, opts: CLIOptions) {
     sourceRoot: `${options.projectRoot}/src`,
     targets: {
       build: {
-        executor: '@ignisda/nx-rust:build',
+        executor: `${PLUGIN_NAME}:build`,
         options: {
           release: false,
         },
@@ -33,18 +34,18 @@ export default async function (host: Tree, opts: CLIOptions) {
         },
       },
       run: {
-        executor: '@ignisda/nx-rust:build',
+        executor: `${PLUGIN_NAME}:build`,
         options: {
           release: false,
           run: true,
         },
       },
       test: {
-        executor: '@ignisda/nx-rust:test',
+        executor: `${PLUGIN_NAME}:test`,
         options: {},
       },
       lint: {
-        executor: '@ignisda/nx-rust:clippy',
+        executor: `${PLUGIN_NAME}:clippy`,
         options: {
           fix: false,
           failOnWarnings: true,
@@ -61,7 +62,7 @@ export default async function (host: Tree, opts: CLIOptions) {
 }
 
 async function addFiles(host: Tree, opts: Options) {
-  if (!host.exists('Cargo.toml')) {
+  if (!host.exists(CARGO_TOML)) {
     await cargoInit(host, {});
   }
 
