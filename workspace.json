@@ -1,5 +1,6 @@
 {
   "projects": {
+    "nx-rust": "packages/nx-rust",
     "remix-pagination": "packages/remix-pagination",
     "remix-pagination-demo": "apps/remix-pagination-demo"
   },

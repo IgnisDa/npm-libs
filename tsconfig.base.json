@@ -18,6 +18,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ignisda/nx-rust": [
+        "packages/nx-rust/src/index.ts"
+      ],
       "@ignisda/remix-pagination": [
         "packages/remix-pagination/src/index.ts"
       ]
