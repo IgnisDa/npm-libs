@@ -5,21 +5,31 @@ on:
       - main
 
 jobs:
-  pre-release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/setup
-
-      - name: Prerelease Version
-        run: npx nx affected --target=version --base=${{ github.event.before }} --head=HEAD --dry-run
-
   release:
     environment: production
     runs-on: ubuntu-latest
-    needs: pre-release
     steps:
       - uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setup
+
+      - name: Set base commit hash
+        run: |
+          #!/usr/bin/env bash
+          commit=${{ github.event.before }}
+          if git branch --contains "$commit"; then
+            echo "No force push detected, continuing..."
+          else
+            # get the commit before this one
+            commit=$(git log --format="%H" -n 2 | tail -n 1)
+          fi
+          echo "BASE_COMMIT=$commit" >> $GITHUB_ENV
+
+      - name: Display base commit
+        run: echo "$BASE_COMMIT"
+
+      - name: Prerelease Version
+        run: pnpm nx affected --target=version --base=$BASE_COMMIT --head=HEAD --dry-run
 
       - name: Configure credentials
         run: |
@@ -27,8 +37,6 @@ jobs:
 
       - name: Check npm credentials
         run: npm whoami
-
-      - uses: ./.github/actions/setup
 
       - name: Configure github identify
         shell: bash
@@ -39,14 +47,17 @@ jobs:
       - name: Tag last-release
         run: git tag --force last-release
 
+      - name: Lint
+        run: pnpm nx affected --target=lint --base=$BASE_COMMIT --head=HEAD
+
       - name: Build
-        run: npx nx affected --target=build --base=${{ github.event.before }} --head=HEAD
+        run: pnpm nx affected --target=build --base=$BASE_COMMIT --head=HEAD
 
       - name: Version
-        run: npx nx affected --target=version --base=${{ github.event.before }} --head=HEAD
+        run: pnpm nx affected --target=version --base=$BASE_COMMIT --head=HEAD
 
       - name: Deploy
-        run: npx nx affected --target=deploy --base=${{ github.event.before }} --head=HEAD
+        run: pnpm nx affected --target=deploy --base=$BASE_COMMIT --head=HEAD
 
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2.10.0
