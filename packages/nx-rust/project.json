@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "required": ["chalk", "stream-chain", "stream-json"],
+    "required": ["@swc/helpers", "chalk", "stream-chain", "stream-json"],
     "development": [
       "@nrwl/devkit",
       "@nrwl/js",
