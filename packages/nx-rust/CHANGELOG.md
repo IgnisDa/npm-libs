@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.0](https://github.com/IgnisDa/npm-libs/compare/nx-rust-0.1.0...nx-rust-0.2.0) (2022-08-02)
+
+
+### Features
+
+* **nx-rust:** extract commons to separate module ([032a325](https://github.com/IgnisDa/npm-libs/commit/032a32538b0e602ac92d7456d1780a3a26e4f38e))
+
 ## 0.1.0 (2022-08-02)
 
 
