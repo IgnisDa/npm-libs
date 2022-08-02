@@ -9,9 +9,15 @@ const { exclude: _, ...swcJestConfig } = JSON.parse(
 export default {
   displayName: 'nx-rust',
   preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    },
+  },
   transform: {
+    '^.+\\.[tj]sx?$': 'ts-jest',
     '^.+\\.[tj]s$': ['@swc/jest', swcJestConfig],
   },
-  moduleFileExtensions: ['ts', 'js', 'html'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/packages/nx-rust',
 };

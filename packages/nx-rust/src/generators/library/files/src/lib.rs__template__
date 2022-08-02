@@ -1,0 +1,13 @@
+pub fn <%= moduleName %>() -> String {
+    "<%= projectName %>".into()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        assert_eq!(<%= moduleName %>(), "<%= projectName %>".to_string());
+    }
+}

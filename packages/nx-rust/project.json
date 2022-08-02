@@ -1,18 +1,20 @@
 {
   "dependencies": {
-    "required": ["@swc/helpers"],
+    "required": ["chalk", "stream-chain", "stream-json"],
     "development": [
       "@nrwl/devkit",
       "@nrwl/js",
       "@swc-node/register",
       "@swc/cli",
       "@swc/core",
+      "@swc/helpers",
       "@swc/jest",
+      "@types/stream-chain",
+      "@types/stream-json",
       "jsonc-eslint-parser",
       "tslib"
     ]
   },
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/nx-rust/src",
   "tags": [],
@@ -68,6 +70,12 @@
         "passWithNoTests": true
       },
       "outputs": ["coverage/packages/nx-rust"]
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional"
+      }
     }
   }
 }

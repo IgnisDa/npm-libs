@@ -1,6 +1,25 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "name": "nx-rust",
+  "name": "cargo",
   "version": "0.0.1",
-  "generators": {}
+  "generators": {
+    "init": {
+      "factory": "./src/generators/init/generator",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Initialize the @ignisda/nx-rust plugin",
+      "hidden": true
+    },
+    "binary": {
+      "factory": "./src/generators/binary/generator",
+      "schema": "./src/generators/binary/schema.json",
+      "description": "Create a Rust binary",
+      "aliases": ["bin", "app", "application"]
+    },
+    "library": {
+      "factory": "./src/generators/library/generator",
+      "schema": "./src/generators/library/schema.json",
+      "description": "Create a Rust library",
+      "aliases": ["lib"]
+    }
+  }
 }

@@ -46,9 +46,12 @@ importers:
       '@types/node': 18.0.3
       '@types/react': 18.0.14
       '@types/react-dom': 18.0.5
+      '@types/stream-chain': ^2.0.1
+      '@types/stream-json': ^1.7.2
       '@typescript-eslint/eslint-plugin': 5.30.6
       '@typescript-eslint/parser': 5.30.6
       babel-jest: 27.5.1
+      chalk: ^4.1.2
       clsx: 1.2.1
       commitizen: 4.2.4
       core-js: 3.23.4
@@ -77,6 +80,8 @@ importers:
       remix-image: 1.3.2
       routes-gen: 0.5.1
       sass: 1.53.0
+      stream-chain: ^2.2.5
+      stream-json: ^1.7.4
       tailwindcss: 3.1.6
       ts-jest: 27.1.4
       ts-node: 10.8.2
@@ -100,6 +105,7 @@ importers:
       '@routes-gen/remix': 0.3.0_remix@1.6.5
       '@swc/helpers': 0.3.3
       '@types/lodash': 4.14.182
+      chalk: 4.1.2
       clsx: 1.2.1
       core-js: 3.23.4
       cross-env: 7.0.3
@@ -113,6 +119,8 @@ importers:
       remix-image: 1.3.2_7slrmpdqqursrteznfxowyr63m
       routes-gen: 0.5.1
       sass: 1.53.0
+      stream-chain: 2.2.5
+      stream-json: 1.7.4
       tailwindcss: 3.1.6_ts-node@10.8.2
       tslib: 2.3.0
       ufo: 0.8.5
@@ -147,6 +155,8 @@ importers:
       '@types/node': 18.0.3
       '@types/react': 18.0.14
       '@types/react-dom': 18.0.5
+      '@types/stream-chain': 2.0.1
+      '@types/stream-json': 1.7.2
       '@typescript-eslint/eslint-plugin': 5.30.6_2vt5mtrqleafs33qg2bhpmbaqm
       '@typescript-eslint/parser': 5.30.6_4x5o4skxv6sl53vpwefgt23khm
       babel-jest: 27.5.1
@@ -4605,6 +4615,19 @@ packages:
 
   /@types/stack-utils/2.0.1:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
+
+  /@types/stream-chain/2.0.1:
+    resolution: {integrity: sha512-D+Id9XpcBpampptkegH7WMsEk6fUdf9LlCIX7UhLydILsqDin4L0QT7ryJR0oycwC7OqohIzdfcMHVZ34ezNGg==}
+    dependencies:
+      '@types/node': 18.0.3
+    dev: true
+
+  /@types/stream-json/1.7.2:
+    resolution: {integrity: sha512-i4LE2aWVb1R3p/Z6S6Sw9kmmOs4Drhg0SybZUyfM499I1c8p7MUKZHs4Sg9jL5eu4mDmcgfQ6eGIG3+rmfUWYw==}
+    dependencies:
+      '@types/node': 18.0.3
+      '@types/stream-chain': 2.0.1
+    dev: true
 
   /@types/table/5.0.0:
     resolution: {integrity: sha512-fQLtGLZXor264zUPWI95WNDsZ3QV43/c0lJpR/h1hhLJumXRmHNsrvBfEzW2YMhb0EWCsn4U6h82IgwsajAuTA==}
@@ -14305,6 +14328,16 @@ packages:
   /statuses/2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
+
+  /stream-chain/2.2.5:
+    resolution: {integrity: sha512-1TJmBx6aSWqZ4tx7aTpBDXK0/e2hhcNSTV8+CbFJtDjbb+I1mZ8lHit0Grw9GRT+6JbIrrDd8esncgBi8aBXGA==}
+    dev: false
+
+  /stream-json/1.7.4:
+    resolution: {integrity: sha512-ja2dde1v7dOlx5/vmavn8kLrxvNfs7r2oNc5DYmNJzayDDdudyCSuTB1gFjH4XBVTIwxiMxL4i059HX+ZiouXg==}
+    dependencies:
+      stream-chain: 2.2.5
+    dev: false
 
   /stream-shift/1.0.1:
     resolution: {integrity: sha512-AiisoFqQ0vbGcZgQPY1cdP2I76glaVA/RauYR4G4thNFgkTqr90yXTo4LYX60Jl+sIlPNHHdGSwo01AvbKUSVQ==}
