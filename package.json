@@ -41,7 +41,7 @@
     "eslint-plugin-react": "7.30.1",
     "eslint-plugin-react-hooks": "4.6.0",
     "execa": "6.1.0",
-    "husky": "8.0.0",
+    "husky": "8.0.1",
     "jest": "27.5.1",
     "ngx-deploy-npm": "4.1.1",
     "nx": "14.4.2",
@@ -86,5 +86,10 @@
   },
   "workspaces": [
     "packages/**"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  }
 }

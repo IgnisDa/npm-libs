@@ -53,7 +53,7 @@ importers:
       eslint-plugin-react-hooks: 4.6.0
       execa: 6.1.0
       graphql: 16.5.0
-      husky: 8.0.0
+      husky: 8.0.1
       jest: 27.5.1
       ngx-deploy-npm: 4.1.1
       npm-run-all: 4.1.5
@@ -141,7 +141,7 @@ importers:
       eslint-plugin-react: 7.30.1_eslint@8.19.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.19.0
       execa: 6.1.0
-      husky: 8.0.0
+      husky: 8.0.1
       jest: 27.5.1_ts-node@10.8.2
       ngx-deploy-npm: 4.1.1_nx@14.4.2
       nx: 14.4.2
@@ -8893,8 +8893,8 @@ packages:
     engines: {node: '>=12.20.0'}
     dev: true
 
-  /husky/8.0.0:
-    resolution: {integrity: sha512-4qbE/5dzNDNxFEkX9MNRPKl5+omTXQzdILCUWiqG/lWIAioiM5vln265/l6I2Zx8gpW8l1ukZwGQeCFbBZ6+6w==}
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
