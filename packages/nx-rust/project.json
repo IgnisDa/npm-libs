@@ -74,7 +74,8 @@
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
-        "preset": "conventional"
+        "preset": "conventional",
+        "allowEmptyRelease": true
       }
     }
   }
