@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.5.2](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.1...nx-rust-14.5.2) (2022-08-03)
+
+
+### Bug Fixes
+
+* **nx-rust:** add watch mode to test executor ([30174f7](https://github.com/IgnisDa/npm-libs/commit/30174f741f2f62180f4e204d53b1dbc25c3b2742))
+
 ## [14.5.1](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.0...nx-rust-14.5.1) (2022-08-03)
 
 ## [1.0.1](https://github.com/IgnisDa/npm-libs/compare/nx-rust-1.0.0...nx-rust-1.0.1) (2022-08-02)
