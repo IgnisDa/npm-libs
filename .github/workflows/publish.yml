@@ -48,11 +48,11 @@ jobs:
       - name: Tag last-release
         run: git tag --force last-release
 
-      - name: Lint
-        run: pnpm nx affected --target=lint --base=$BASE_COMMIT --head=HEAD
-
       - name: Build
         run: pnpm nx affected --target=build --base=$BASE_COMMIT --head=HEAD
+
+      - name: Lint
+        run: pnpm nx affected --target=lint --base=$BASE_COMMIT --head=HEAD
 
       - name: Version
         run: pnpm nx affected --target=version --base=$BASE_COMMIT --head=HEAD --parallel 1
