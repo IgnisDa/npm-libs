@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.5.4](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.3...nx-rust-14.5.4) (2022-08-03)
+
+
+### Bug Fixes
+
+* **nx-rust:** use toml parser to create add members to workspace ([b81c535](https://github.com/IgnisDa/npm-libs/commit/b81c5357cbf60eb16f0b8a1802a5983db05bd14b))
+
 ## [14.5.3](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.2...nx-rust-14.5.3) (2022-08-03)
 
 
