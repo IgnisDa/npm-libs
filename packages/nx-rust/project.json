@@ -9,10 +9,15 @@
       "@swc/core",
       "@swc/helpers",
       "@swc/jest",
+      "@types/glob",
+      "@types/json-stable-stringify",
       "@types/stream-chain",
       "@types/stream-json",
+      "glob",
+      "json-stable-stringify",
       "jsonc-eslint-parser",
-      "tslib"
+      "tslib",
+      "typescript-json-schema"
     ]
   },
   "projectType": "library",
@@ -20,6 +25,12 @@
   "tags": ["publish-npm"],
   "targets": {
     "build": {
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "generate-schema"
+        }
+      ],
       "executor": "@nrwl/js:swc",
       "options": {
         "assets": [
@@ -50,6 +61,13 @@
         "tsConfig": "packages/nx-rust/tsconfig.lib.json"
       },
       "outputs": ["{options.outputPath}"]
+    },
+    "generate-schema": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node src/generate-schema.ts",
+        "cwd": "packages/nx-rust"
+      }
     },
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",

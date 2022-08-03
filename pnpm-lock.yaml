@@ -41,7 +41,9 @@ importers:
       '@swc/helpers': 0.3.3
       '@swc/jest': 0.2.20
       '@testing-library/react': 13.3.0
+      '@types/glob': 7.2.0
       '@types/jest': 27.4.1
+      '@types/json-stable-stringify': 1.0.34
       '@types/lodash': 4.14.182
       '@types/node': 18.0.3
       '@types/react': 18.0.14
@@ -65,9 +67,11 @@ importers:
       eslint-plugin-react: 7.30.1
       eslint-plugin-react-hooks: 4.6.0
       execa: 6.1.0
+      glob: 8.0.3
       graphql: 16.5.0
       husky: 8.0.1
       jest: 27.5.1
+      json-stable-stringify: 1.0.1
       jsonc-eslint-parser: 2.1.0
       ngx-deploy-npm: 4.1.1
       npm-run-all: 4.1.5
@@ -90,6 +94,7 @@ importers:
       ts-node: 10.8.2
       tslib: 2.3.0
       typescript: 4.7.4
+      typescript-json-schema: 0.54.0
       ufo: 0.8.5
       urql: 2.2.2
       urql-generic-requester: 0.0.1
@@ -154,7 +159,9 @@ importers:
       '@swc/core': 1.2.173
       '@swc/jest': 0.2.20_@swc+core@1.2.173
       '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
+      '@types/glob': 7.2.0
       '@types/jest': 27.4.1
+      '@types/json-stable-stringify': 1.0.34
       '@types/node': 18.0.3
       '@types/react': 18.0.14
       '@types/react-dom': 18.0.5
@@ -173,8 +180,10 @@ importers:
       eslint-plugin-react: 7.30.1_eslint@8.19.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.19.0
       execa: 6.1.0
+      glob: 8.0.3
       husky: 8.0.1
       jest: 27.5.1_ts-node@10.8.2
+      json-stable-stringify: 1.0.1
       jsonc-eslint-parser: 2.1.0
       ngx-deploy-npm: 4.1.1_nx@14.5.1
       nx: 14.5.1_zj6pvowc7ira3d65lsk73mx5jy
@@ -184,6 +193,7 @@ importers:
       ts-jest: 27.1.4_4vac53qkbh3p4hrqxdjprq7yr4
       ts-node: 10.8.2_xad4uhq2vp4delz7xbj5xh2h2q
       typescript: 4.7.4
+      typescript-json-schema: 0.54.0_@swc+core@1.2.173
 
   packages/remix-pagination:
     specifiers:
@@ -4484,7 +4494,6 @@ packages:
 
   /@types/json-stable-stringify/1.0.34:
     resolution: {integrity: sha512-s2cfwagOQAS8o06TcwKfr9Wx11dNGbH2E9vJz1cqV+a/LOyhWNLUNd6JSRYNzvB4d29UuJX2M0Dj9vE1T8fRXw==}
-    dev: false
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
@@ -4540,6 +4549,10 @@ packages:
 
   /@types/node/13.9.3:
     resolution: {integrity: sha512-01s+ac4qerwd6RHD+mVbOEsraDHSgUaefQlEdBbUolnQFjKwCr7luvAlEwW1RFojh67u0z4OUTjPn9LEl4zIkA==}
+    dev: true
+
+  /@types/node/16.11.47:
+    resolution: {integrity: sha512-fpP+jk2zJ4VW66+wAMFoBJlx1bxmBKx4DUFf68UHgdGCOuyUTDlLWqsaNPJh7xhNDykyJ9eIzAygilP/4WoN8g==}
     dev: true
 
   /@types/node/18.0.3:
@@ -8795,6 +8808,17 @@ packages:
       once: 1.4.0
       path-is-absolute: 1.0.1
 
+  /glob/8.0.3:
+    resolution: {integrity: sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      fs.realpath: 1.0.0
+      inflight: 1.0.6
+      inherits: 2.0.4
+      minimatch: 5.1.0
+      once: 1.4.0
+    dev: true
+
   /global-dirs/0.1.1:
     resolution: {integrity: sha512-NknMLn7F2J7aflwFOlGdNIuCDpN3VGoSoB+aap3KABFWbHVn1TCgFC+np23J8W2BiZbjfEw3BFBycSMv1AFblg==}
     engines: {node: '>=4'}
@@ -10532,7 +10556,6 @@ packages:
     resolution: {integrity: sha512-i/J297TW6xyj7sDFa7AmBPkQvLIxWr2kKPWI26tXydnZrzVAocNqn5DMNT1Mzk0vit1V5UkRM7C1KdVNp7Lmcg==}
     dependencies:
       jsonify: 0.0.0
-    dev: false
 
   /json-stringify-safe/5.0.1:
     resolution: {integrity: sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==}
@@ -10586,7 +10609,6 @@ packages:
 
   /jsonify/0.0.0:
     resolution: {integrity: sha512-trvBk1ki43VZptdBI5rIlG4YOzyeH/WefQt5rj1grasPn4iiZWKet8nkgc4GlsAylaztn0qZfUYOiTsASJFdNA==}
-    dev: false
 
   /jsonparse/1.3.1:
     resolution: {integrity: sha512-POQXvpdL69+CluYsillJ7SUhKvytYjW9vG/GKpnf+xP8UWgYEM/RaMzHHofbALDiKbbP1W8UEYmgGl39WkPZsg==}
@@ -12371,6 +12393,10 @@ packages:
       dot-case: 3.0.4
       tslib: 2.4.0
     dev: false
+
+  /path-equal/1.2.2:
+    resolution: {integrity: sha512-AUJvbcle1Zgb1TgtftHYknlrgrSYyI1ytrYgSbKUHSybwqUDnbD2cw9PIWivuMvsN+GTXmr/DRN4VBXpHG6aGg==}
+    dev: true
 
   /path-exists/3.0.0:
     resolution: {integrity: sha512-bpC7GYwiDYQ4wYLe+FA8lhRjhQCMcQGuSgGGqDkg/QerRWw9CmGRT0iSOVRSZJ29NMLZgIzqaljJ63oaL4NIJQ==}
@@ -15000,6 +15026,38 @@ packages:
     resolution: {integrity: sha512-DEQrfv6l7IvN2jlzc/VTdZJYsWUnQNCsueYjMkC/iXoEoi5fNan6MjeDqkvhfzbmHgdz9UxDUluX3V5HdjTydQ==}
     dev: false
 
+  /ts-node/10.8.2_4m5upqt3vt47egcmgtjn2oxp6y:
+    resolution: {integrity: sha512-LYdGnoGddf1D6v8REPtIH+5iq/gTDuZqv2/UJUU7tKjuEU8xVZorBM+buCGNjj+pGEud+sOoM4CX3/YzINpENA==}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': '>=1.2.50'
+      '@swc/wasm': '>=1.2.50'
+      '@types/node': '*'
+      typescript: '>=2.7'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      '@swc/wasm':
+        optional: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      '@swc/core': 1.2.173
+      '@tsconfig/node10': 1.0.9
+      '@tsconfig/node12': 1.0.11
+      '@tsconfig/node14': 1.0.3
+      '@tsconfig/node16': 1.0.3
+      '@types/node': 16.11.47
+      acorn: 8.7.1
+      acorn-walk: 8.2.0
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 4.6.4
+      v8-compile-cache-lib: 3.0.1
+      yn: 3.1.1
+    dev: true
+
   /ts-node/10.8.2_xad4uhq2vp4delz7xbj5xh2h2q:
     resolution: {integrity: sha512-LYdGnoGddf1D6v8REPtIH+5iq/gTDuZqv2/UJUU7tKjuEU8xVZorBM+buCGNjj+pGEud+sOoM4CX3/YzINpENA==}
     hasBin: true
@@ -15144,6 +15202,29 @@ packages:
 
   /typedarray/0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
+    dev: true
+
+  /typescript-json-schema/0.54.0_@swc+core@1.2.173:
+    resolution: {integrity: sha512-/MNhm1pjdxXiVspjjyRCrQAA1B768cRzHU83aIqN5vQqQEW2NgyyKOfcguiRIMM64lseIZIelegnHOHEu7YDCg==}
+    hasBin: true
+    dependencies:
+      '@types/json-schema': 7.0.11
+      '@types/node': 16.11.47
+      glob: 7.2.3
+      path-equal: 1.2.2
+      safe-stable-stringify: 2.3.1
+      ts-node: 10.8.2_4m5upqt3vt47egcmgtjn2oxp6y
+      typescript: 4.6.4
+      yargs: 17.5.1
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+    dev: true
+
+  /typescript/4.6.4:
+    resolution: {integrity: sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
     dev: true
 
   /typescript/4.7.4:

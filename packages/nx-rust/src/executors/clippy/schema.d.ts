@@ -1,3 +1,6 @@
+/**
+ * Run clippy for a particular project
+ */
 export default interface Options {
   /** Automatically fix code where possible. */
   fix?: boolean;
