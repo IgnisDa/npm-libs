@@ -1,9 +1,14 @@
-import * as nrwl from '@nrwl/devkit';
-import { ExecutorContext, Tree } from '@nrwl/devkit';
+import { parse as parseToml, stringify as stringifyToml } from '@iarna/toml';
+import {
+  ExecutorContext,
+  getWorkspaceLayout,
+  names as nrwlNames,
+  Tree,
+} from '@nrwl/devkit';
 import * as chalk from 'chalk';
-import * as cp from 'child_process';
-import { CARGO_TOML } from './constants';
+import { spawn } from 'node:child_process';
 
+import { CARGO_TOML } from './constants';
 import {
   CompilationOptions,
   DisplayOptions,
@@ -21,16 +26,15 @@ export interface GeneratorOptions {
   edition: number;
 }
 
-// prettier-ignore
 export type CargoOptions = Partial<
-	& FeatureSelection
-	& CompilationOptions
-	& OutputOptions
-	& DisplayOptions
-	& ManifestOptions
+  FeatureSelection &
+    CompilationOptions &
+    OutputOptions &
+    DisplayOptions &
+    ManifestOptions
 > & {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	[key: string]: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
 };
 
 interface GeneratorCLIOptions {
@@ -50,7 +54,7 @@ interface Names {
 }
 
 export function cargoNames(name: string): Names {
-  const result = nrwl.names(name) as Names;
+  const result = nrwlNames(name) as Names;
   result.snakeName = result.constantName.toLowerCase();
 
   return result;
@@ -61,7 +65,7 @@ export function normalizeGeneratorOptions<T extends GeneratorCLIOptions>(
   host: Tree,
   opts: T
 ): T & GeneratorOptions {
-  const layout = nrwl.getWorkspaceLayout(host);
+  const layout = getWorkspaceLayout(host);
   const names = cargoNames(opts.name);
   // let fileName = names.fileName;
   const moduleName = names.snakeName;
@@ -81,7 +85,7 @@ export function normalizeGeneratorOptions<T extends GeneratorCLIOptions>(
   }[projectType];
 
   const projectDirectory = opts.directory
-    ? `${nrwl.names(opts.directory).fileName}/${fileName}`
+    ? `${nrwlNames(opts.directory).fileName}/${fileName}`
     : fileName;
 
   const projectRoot = `${rootDir}/${projectDirectory}`;
@@ -100,30 +104,10 @@ export function normalizeGeneratorOptions<T extends GeneratorCLIOptions>(
 }
 
 export function updateWorkspaceMembers(host: Tree, opts: GeneratorOptions) {
-  const updated = host
-    .read(CARGO_TOML)
-    .toString()
-    .split('\n')
-    .reduce((acc, line) => {
-      const trimmed = line.trim();
-      let match: RegExpMatchArray | null;
-      if ((match = trimmed.match(/^members\s*=\s*\[(.*)\]$/))) {
-        const members = match[1]
-          .split(',')
-          .map((m) => m.trim())
-          .filter(Boolean);
-        members.push(`"${opts.projectRoot}"`);
-        acc.push(`members = [`, ...members.map((m) => '    ' + m), `]`);
-      } else if ((match = trimmed.match(/^members\s*=\s*\[$/))) {
-        acc.push(line, `    "${opts.projectRoot}",`);
-      } else {
-        acc.push(line);
-      }
-
-      return acc;
-    }, [] as string[])
-    .join('\n');
-
+  const existingToml: any = parseToml(host.read(CARGO_TOML, 'utf-8'));
+  if (existingToml.workspace.members)
+    existingToml.workspace.members.push(opts.projectRoot);
+  const updated = stringifyToml(existingToml);
   host.write(CARGO_TOML, updated);
 }
 
@@ -137,19 +121,26 @@ export function parseCargoArgs(
     args.push(`+${opts.toolchain}`);
   }
 
-  // prettier-ignore
   switch (ctx.targetName) {
-		case "build": args.push("build"); break;
-		case "test":  args.push("test");  break;
-		case "run": args.push("run"); break;
-		default: {
-			if (ctx.targetName == null) {
-				throw new Error("Expected target name to be non-null");
-			} else {
-				throw new Error(`Target '${ctx.targetName}' is invalid or not yet implemented`);
-			}
-		}
-	}
+    case 'build':
+      args.push('build');
+      break;
+    case 'test':
+      args.push('test');
+      break;
+    case 'run':
+      args.push('run');
+      break;
+    default: {
+      if (ctx.targetName == null) {
+        throw new Error('Expected target name to be non-null');
+      } else {
+        throw new Error(
+          `Target '${ctx.targetName}' is invalid or not yet implemented`
+        );
+      }
+    }
+  }
 
   if (!ctx.projectName) {
     throw new Error('Expected project name to be non-null');
@@ -185,13 +176,10 @@ export function parseCargoArgs(
           `'outDir' option can only be used with 'nightly' toolchain, ` +
           `but toolchain '${original}' was already specified. ` +
           `Overriding '${original}' => 'nightly'.`;
-
         console.log(`${label} ${message}`);
 
         args[0] = '+nightly';
-      } else {
-        args.unshift('+nightly');
-      }
+      } else args.unshift('+nightly');
     }
     args.push('-Z', 'unstable-options', '--out-dir', opts.outDir);
   }
@@ -202,15 +190,14 @@ export function parseCargoArgs(
   if (opts.locked) args.push('--locked');
   if (opts.frozen) args.push('--frozen');
   if (opts.offline) args.push('--offline');
-
   return args;
 }
 
 export function runCargo(args: string[], ctx: ExecutorContext) {
   console.log(chalk.dim(`> cargo ${args.join(' ')}`));
 
-  return new Promise<void>((resolve, reject) => {
-    cp.spawn('cargo', args, {
+  return new Promise<void>((resolve, reject) =>
+    spawn('cargo', args, {
       cwd: ctx.root,
       shell: true,
       stdio: 'inherit',
@@ -219,6 +206,6 @@ export function runCargo(args: string[], ctx: ExecutorContext) {
       .on('close', (code) => {
         if (code) reject(new Error(`Cargo failed with exit code ${code}`));
         else resolve();
-      });
-  });
+      })
+  );
 }

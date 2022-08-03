@@ -17,6 +17,7 @@ importers:
       '@graphql-codegen/typescript': 2.7.2
       '@graphql-codegen/typescript-generic-sdk': 2.4.2
       '@graphql-codegen/typescript-operations': 2.5.2
+      '@iarna/toml': 2.2.5
       '@jscutlery/semver': 2.25.2
       '@nrwl/cli': 14.5.1
       '@nrwl/devkit': 14.5.1
@@ -42,6 +43,7 @@ importers:
       '@swc/jest': 0.2.20
       '@testing-library/react': 13.3.0
       '@types/glob': 7.2.0
+      '@types/iarna__toml': 2.0.2
       '@types/jest': 27.4.1
       '@types/json-stable-stringify': 1.0.34
       '@types/lodash': 4.14.182
@@ -106,6 +108,7 @@ importers:
       '@graphql-codegen/typescript': 2.7.2_graphql@16.5.0
       '@graphql-codegen/typescript-generic-sdk': 2.4.2_graphql@16.5.0
       '@graphql-codegen/typescript-operations': 2.5.2_graphql@16.5.0
+      '@iarna/toml': 2.2.5
       '@remix-run/eslint-config': 1.6.5_phr6zfp2vdgu5deivewvunmknu
       '@remix-run/node': 1.6.5_biqbaboplfbrettd7655fr4n2y
       '@remix-run/react': 1.6.5_biqbaboplfbrettd7655fr4n2y
@@ -160,6 +163,7 @@ importers:
       '@swc/jest': 0.2.20_@swc+core@1.2.173
       '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
       '@types/glob': 7.2.0
+      '@types/iarna__toml': 2.0.2
       '@types/jest': 27.4.1
       '@types/json-stable-stringify': 1.0.34
       '@types/node': 18.0.3
@@ -4457,6 +4461,12 @@ packages:
 
   /@types/http-proxy/1.17.9:
     resolution: {integrity: sha512-QsbSjA/fSk7xB+UXlCT3wHBy5ai9wOcNDWwZAtud+jXhwOM3l+EYZh8Lng4+/6n8uar0J7xILzqftJdJ/Wdfkw==}
+    dependencies:
+      '@types/node': 18.0.3
+    dev: true
+
+  /@types/iarna__toml/2.0.2:
+    resolution: {integrity: sha512-Q3obxKhBLVVbEQ8zsAmsQVobAAZhi8dFFFjF0q5xKXiaHvH8IkSxcbM27e46M9feUMieR03SPpmp5CtaNzpdBg==}
     dependencies:
       '@types/node': 18.0.3
     dev: true

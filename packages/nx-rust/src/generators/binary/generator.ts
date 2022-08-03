@@ -1,6 +1,6 @@
 import * as nrwl from '@nrwl/devkit';
 import { Tree } from '@nrwl/devkit';
-import * as path from 'path';
+import { join } from 'node:path';
 
 import {
   GeneratorOptions,
@@ -11,7 +11,6 @@ import { CARGO_TOML, PLUGIN_NAME } from '../../common/constants';
 import cargoInit from '../init/generator';
 import CLIOptions from './schema';
 
-// prettier-ignore
 type Options = CLIOptions & GeneratorOptions;
 
 export default async function (host: Tree, opts: CLIOptions) {
@@ -24,21 +23,12 @@ export default async function (host: Tree, opts: CLIOptions) {
     targets: {
       build: {
         executor: `${PLUGIN_NAME}:build`,
-        options: {
-          release: false,
-        },
-        configurations: {
-          production: {
-            release: true,
-          },
-        },
+        options: { release: false },
+        configurations: { production: { release: true } },
       },
       run: {
         executor: `${PLUGIN_NAME}:build`,
-        options: {
-          release: false,
-          run: true,
-        },
+        options: { release: false, run: true },
       },
       test: {
         executor: `${PLUGIN_NAME}:test`,
@@ -46,25 +36,18 @@ export default async function (host: Tree, opts: CLIOptions) {
       },
       lint: {
         executor: `${PLUGIN_NAME}:clippy`,
-        options: {
-          fix: false,
-          failOnWarnings: true,
-          noDeps: true,
-        },
+        options: { fix: false, failOnWarnings: true, noDeps: true },
       },
     },
     tags: options.parsedTags,
   });
-
   await addFiles(host, options);
   updateWorkspaceMembers(host, options);
   await nrwl.formatFiles(host);
 }
 
 async function addFiles(host: Tree, opts: Options) {
-  if (!host.exists(CARGO_TOML)) {
-    await cargoInit(host, {});
-  }
+  if (!host.exists(CARGO_TOML)) await cargoInit(host, {});
 
   const substitutions = {
     projectName: opts.projectName,
@@ -74,7 +57,7 @@ async function addFiles(host: Tree, opts: Options) {
 
   nrwl.generateFiles(
     host,
-    path.join(__dirname, 'files'),
+    join(__dirname, 'files'),
     opts.projectRoot,
     substitutions
   );

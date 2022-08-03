@@ -1,6 +1,12 @@
 {
   "dependencies": {
-    "required": ["@swc/helpers", "chalk", "stream-chain", "stream-json"],
+    "required": [
+      "@iarna/toml",
+      "@swc/helpers",
+      "chalk",
+      "stream-chain",
+      "stream-json"
+    ],
     "development": [
       "@nrwl/devkit",
       "@nrwl/js",
@@ -10,6 +16,7 @@
       "@swc/helpers",
       "@swc/jest",
       "@types/glob",
+      "@types/iarna__toml",
       "@types/json-stable-stringify",
       "@types/stream-chain",
       "@types/stream-json",
@@ -62,17 +69,17 @@
       },
       "outputs": ["{options.outputPath}"]
     },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    },
     "generate-schema": {
       "executor": "nx:run-commands",
       "options": {
         "command": "ts-node src/generate-schema.ts",
         "cwd": "packages/nx-rust"
-      }
-    },
-    "deploy": {
-      "executor": "ngx-deploy-npm:deploy",
-      "options": {
-        "access": "public"
       }
     },
     "lint": {
