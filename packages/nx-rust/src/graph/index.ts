@@ -3,30 +3,13 @@ import {
   ProjectGraphBuilder,
   ProjectGraphProcessorContext,
 } from '@nrwl/devkit';
-import * as chalk from 'chalk';
 import { execSync } from 'node:child_process';
-import { Readable, Stream } from 'node:stream';
-import { inspect } from 'node:util';
 import { chain } from 'stream-chain';
 import { parser } from 'stream-json';
 import { pick } from 'stream-json/filters/Pick';
 import { streamValues } from 'stream-json/streamers/StreamValues';
-
-const bufferToStream = (buffer: Buffer) => {
-  const stream = new Readable();
-  stream.push(buffer);
-  stream.push(null);
-  return stream;
-};
-
-const pipelineToObject = async (pipeline: Stream) => {
-  return new Promise<any>((resolve, reject) => {
-    let _buf: any;
-    pipeline.on('data', (chunk) => (_buf = chunk['value']));
-    pipeline.on('end', () => resolve(_buf));
-    pipeline.on('error', (err) => reject(`error converting stream - ${err}`));
-  });
-};
+import { RUST } from '../common/constants';
+import { bufferToStream, longestCommonPrefix, pipelineToObject } from './utils';
 
 export async function processProjectGraph(
   graph: ProjectGraph,
@@ -42,7 +25,7 @@ export async function processProjectGraph(
     pick({ filter: 'workspace_members' }),
     streamValues(),
   ]);
-  const workspace_members = await pipelineToObject(workspaceMembersPipeline);
+  const workspaceMembers = await pipelineToObject(workspaceMembersPipeline);
   const packagesPipeline = chain([
     bufferToStream(buf),
     parser(),
@@ -50,42 +33,53 @@ export async function processProjectGraph(
     streamValues(),
   ]);
   const packages = await pipelineToObject(packagesPipeline);
+
   const builder = new ProjectGraphBuilder(graph);
-  const filteredWorkspaceMembers = workspace_members
+
+  const filteredWorkspaceMembers = workspaceMembers
     .map((id) => packages.find((pkg) => pkg.id === id))
     .filter((pkg) => Object.keys(ctx.fileMap).includes(pkg.name));
 
+  // first we need to create external nodes for each cargo package dependency of the
+  // project
+  filteredWorkspaceMembers
+    .flatMap((fw) => fw.dependencies)
+    .forEach((pkg) =>
+      builder.addExternalNode({
+        name: `${RUST}:${pkg.name}` as any,
+        type: RUST as any,
+        data: { version: pkg.version, packageName: pkg.name },
+      })
+    );
+
   for (const pkg of filteredWorkspaceMembers) {
     for (const dep of pkg.dependencies) {
-      // it is a cargo dependency, should be skipped
-      if (!dep.path) continue;
       const depName = dep.name;
-      if (!Object.keys(graph.nodes).includes(depName)) {
-        const depPkg = packages.find((pkg) =>
-          pkg.source.startsWith(dep.source)
-        );
-        if (!depPkg) {
-          console.log(
-            `${chalk.yellowBright.bold.inverse(
-              ' WARN '
-            )} Failed to find package for dependency:`
-          );
-          console.log(inspect(dep));
-          return;
-        }
-        builder.addNode({
-          name: depName,
-          type: 'cargo' as any,
-          data: {
-            version: depPkg.version,
-            packageName: depPkg.name,
-            files: [],
-          },
-        });
+      if (!dep.path) {
+        // it is a cargo dependency
+        // TODO: Add dependencies on a per-file basis
+        // const cargoName = `${CARGO}:${depName}`;
+        // const externalNode = (builder.graph.externalNodes[cargoName]);
+        continue;
       }
-      builder.addImplicitDependency(pkg.name, depName);
+      // It is a direct dependency. To link the two projects together, we will create link
+      // explicitDependency between the `Cargo.toml` of `dep` and the target project.
+      const workspaceMember = filteredWorkspaceMembers.find(
+        (fw) => fw.name === depName
+      );
+      const prefixPath = longestCommonPrefix([
+        workspaceMember.manifest_path,
+        pkg.manifest_path,
+      ]);
+      const newManifestPath = pkg.manifest_path.replace(prefixPath, '');
+      builder.addExplicitDependency(
+        pkg.name,
+        newManifestPath,
+        workspaceMember.name
+      );
     }
   }
-
-  return builder.getUpdatedProjectGraph();
+  const updatedProjectGraph = builder.getUpdatedProjectGraph();
+  // console.log(updatedProjectGraph);
+  return updatedProjectGraph;
 }
