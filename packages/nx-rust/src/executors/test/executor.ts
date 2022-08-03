@@ -5,9 +5,13 @@ import CLIOptions from './schema';
 
 export default async function (opts: CLIOptions, ctx: ExecutorContext) {
   try {
-    const args = parseCargoArgs(opts, ctx);
+    let args = parseCargoArgs(opts, ctx);
+    if (opts.watch) {
+      args.unshift('cargo');
+      const oldArgs = args.join(' ');
+      args = ['watch', '-cq', '-s', `"${oldArgs}"`];
+    }
     await runCargo(args, ctx);
-
     return { success: true };
   } catch (err) {
     return {

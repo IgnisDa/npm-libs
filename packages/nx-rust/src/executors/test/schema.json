@@ -58,6 +58,11 @@
     "toolchain": {
       "type": "string",
       "description": "See the [rustup documentation](https://rust-lang.github.io/rustup/overrides.html) for more information about how toolchain overrides work."
+    },
+    "watch": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to launch the test runner in watch mode. This uses `cargo-watch` under the hood to watch for file changes."
     }
   },
   "required": []
