@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.5.3](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.2...nx-rust-14.5.3) (2022-08-03)
+
+
+### Bug Fixes
+
+* **nx-rust:** delete schema files ([ca3800a](https://github.com/IgnisDa/npm-libs/commit/ca3800add117fd5a0ae1b4296d1157e3551eaf83))
+* **nx-rust:** generate json-schemas for executors while building ([a4bf1b8](https://github.com/IgnisDa/npm-libs/commit/a4bf1b8e6ee4145d03ee0b0642680f2a57300ae4))
+
 ## [14.5.2](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.1...nx-rust-14.5.2) (2022-08-03)
 
 
