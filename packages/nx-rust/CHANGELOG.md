@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.5.1](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.0...nx-rust-14.5.1) (2022-08-03)
+
 ## [1.0.1](https://github.com/IgnisDa/npm-libs/compare/nx-rust-1.0.0...nx-rust-1.0.1) (2022-08-02)
 
 ## [1.0.0](https://github.com/IgnisDa/npm-libs/compare/nx-rust-0.3.0...nx-rust-1.0.0) (2022-08-02)

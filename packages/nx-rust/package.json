@@ -6,7 +6,7 @@
   "description": "An NX plugin to manage rust projects",
   "license": "MIT",
   "name": "@ignisda/nx-rust",
-  "version": "1.0.1",
+  "version": "14.5.1",
   "main": "src/index.js",
   "repository": {
     "url": "https://github.com/ignisda/npm-libs"
