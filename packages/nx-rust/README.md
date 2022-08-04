@@ -13,12 +13,8 @@ Installing the correct version is important. Read [versioning](#versioning).
 ## Generators
 
 ```sh
-# @ignisda/nx-rust:bin also works
-> nx generate @ignisda/nx-rust:app my-rust-app
-```
-
-```sh
-> nx generate @ignisda/nx-rust:lib my-rust-lib
+> nx generate @ignisda/nx-rust:app my-rust-app # generate binary
+> nx generate @ignisda/nx-rust:lib my-rust-lib # generate library
 ```
 
 ## Executors
@@ -26,15 +22,19 @@ Installing the correct version is important. Read [versioning](#versioning).
 ```sh
 # Build a library or binary
 > nx build my-rust-app
-
-# Run unit tests in a library
-> nx test my-rust-lib
-
+# Run unit tests in a library, and enable watch mode
+> nx test my-rust-lib --watch
 # Check a Rust project with `clippy`
 > nx lint my-rust-app
 # Don't fail on warnings:
 > nx lint my-rust-app --fail-on-warnings false
 ```
+
+This plugin also provides the `@ignisda/nx-rust:nextest` executor to run the tests using
+[nextest](https://nexte.st/).
+
+**NOTE**: This plugin uses [cargo-watch](https://github.com/watchexec/cargo-watch) to
+enable watch mode. Please follow its installation instructions to be able to use it.
 
 ### Options
 
