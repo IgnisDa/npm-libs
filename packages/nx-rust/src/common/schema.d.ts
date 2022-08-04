@@ -87,3 +87,13 @@ export interface ManifestOptions {
    */
   offline?: boolean;
 }
+
+export interface WatchModeOptions {
+  /**
+   * Whether to launch the test runner in watch mode. This uses `cargo-watch` under the
+   * hood to watch for file changes and the binary should be available in
+   * $PATH.
+   * @default false
+   */
+  watch?: boolean;
+}
