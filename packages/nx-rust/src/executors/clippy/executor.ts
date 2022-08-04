@@ -1,38 +1,33 @@
 import { ExecutorContext } from '@nrwl/devkit';
-import { runCargo } from '../../common';
+
+import {
+  getCargoCommandFromExecutor,
+  runCargo,
+  wrapWithCargoWatch,
+} from '../../common';
 import CLIOptions from './schema';
 
 export default async function (opts: CLIOptions, ctx: ExecutorContext) {
+  const targetCommand = getCargoCommandFromExecutor(ctx.target.executor);
   try {
-    const args = parseArgs(opts, ctx);
-    await runCargo(args, ctx);
-
+    const args = parseCargoArgs(opts, ctx);
+    let finalCommand = [...targetCommand, ...args];
+    if (opts.watch) finalCommand = wrapWithCargoWatch(finalCommand);
+    await runCargo(finalCommand, ctx);
     return { success: true };
   } catch (err) {
-    return {
-      success: false,
-      reason: err?.message,
-    };
+    return { success: false, reason: err?.message };
   }
 }
 
-function parseArgs(opts: CLIOptions, ctx: ExecutorContext): string[] {
-  const args = ['clippy'];
-
-  if (!ctx.projectName) {
-    throw new Error('Expected project name to be non-null');
-  }
+function parseCargoArgs(opts: CLIOptions, ctx: ExecutorContext): string[] {
+  const args = [];
+  if (!ctx.projectName) throw new Error('Expected project name to be non-null');
   args.push('-p', ctx.projectName);
   args.push('--');
-
-  if (opts.failOnWarnings || opts.failOnWarnings == null) {
+  if (opts.failOnWarnings || opts.failOnWarnings == null)
     args.push('-D', 'warnings');
-  }
-  if (opts.noDeps || opts.noDeps == null) {
-    args.push('--no-deps');
-  }
-
+  if (opts.noDeps || opts.noDeps == null) args.push('--no-deps');
   if (opts.fix) args.push('--fix');
-
   return args;
 }

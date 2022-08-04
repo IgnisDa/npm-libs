@@ -4,6 +4,7 @@ import {
   FeatureSelection,
   OutputOptions,
   ManifestOptions,
+  WatchModeOptions,
 } from '../../common/schema';
 
 /**
@@ -13,7 +14,8 @@ type Options = FeatureSelection &
   CompilationOptions &
   OutputOptions &
   DisplayOptions &
-  ManifestOptions & {
+  ManifestOptions &
+  WatchModeOptions & {
     /**
      * Copy final artifacts to this directory.
      *
