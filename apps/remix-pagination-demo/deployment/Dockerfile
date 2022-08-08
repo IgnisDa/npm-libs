@@ -5,7 +5,7 @@ ENV PROJECT_NAME=remix-pagination-demo \
 FROM base AS builder
 RUN apk add --no-cache curl g++ make py3-pip && \
     yarn global add pnpm@7.5.0 && \
-    curl https://raw.githubusercontent.com/IgnisDa/developrs/main/packages/esteem/install.sh | sh -s -- --yes
+    curl https://raw.githubusercontent.com/IgnisDa/developrs/main/apps/esteem/install.sh | sh -s -- --yes
 WORKDIR /app
 COPY package.json pnpm-lock.yaml .npmrc ./
 RUN pnpm install --frozen-lockfile --ignore-scripts
