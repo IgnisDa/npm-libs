@@ -10,7 +10,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml .npmrc ./
 RUN pnpm install --frozen-lockfile --ignore-scripts
 COPY . .
-RUN esteem install-isolated $(echo $(node ./deployment/get-project-deps.mjs ${PROJECT_NAME}))
+RUN esteem install-isolated -C $(echo $(node ./deployment/get-project-deps.mjs ${PROJECT_NAME}))
 RUN pnpm nx build ${PROJECT_NAME}
 RUN pnpm install --production --ignore-scripts --prefer-offline
 
