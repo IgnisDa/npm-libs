@@ -10,6 +10,7 @@ import {
 import styles from './tailwind.css';
 
 import type { MetaFunction, LinksFunction } from '@remix-run/node';
+import { Footer } from './lib/components/Footer';
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }];
 
@@ -26,11 +27,14 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
-        <Outlet />
+      <body className="min-h-screen flex flex-col">
+        <div className="p-8 lg:p-20 flex flex-1">
+          <Outlet />
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <Footer />
       </body>
     </html>
   );
