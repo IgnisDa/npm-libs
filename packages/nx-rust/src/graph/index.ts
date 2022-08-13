@@ -1,4 +1,8 @@
-import { ProjectGraph, ProjectGraphBuilder, ProjectGraphProcessorContext } from '@nrwl/devkit';
+import {
+  ProjectGraph,
+  ProjectGraphBuilder,
+  ProjectGraphProcessorContext,
+} from '@nrwl/devkit';
 import { execSync } from 'node:child_process';
 import { chain } from 'stream-chain';
 import { parser } from 'stream-json';
@@ -73,6 +77,8 @@ export async function processProjectGraph(
         workspaceMember.manifest_path,
         pkg.manifest_path,
       ]);
+      // we need to normalize the path because of differences of the path separator in
+      // windows operating systems
       const newManifestPath = normalizePath(
         pkg.manifest_path.replace(prefixPath, '')
       );
