@@ -55,7 +55,7 @@ jobs:
         run: pnpm nx affected --target=lint --base=$BASE_COMMIT --head=HEAD
 
       - name: Version
-        run: pnpm nx affected --target=version --base=$BASE_COMMIT --head=HEAD --parallel 1
+        run: pnpm nx affected --target=version --base=$BASE_COMMIT --head=HEAD
 
       - name: Deploy
         run: ./deployment/publish.sh
