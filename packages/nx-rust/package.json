@@ -1,25 +1,27 @@
 {
+  "name": "@ignisda/nx-rust",
+  "version": "14.5.7",
+  "description": "An NX plugin to manage rust projects",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ignisda/npm-libs",
+    "directory": "packages/nx-rust"
+  },
+  "license": "MIT",
   "author": {
     "name": "Diptesh Choudhuri",
     "email": "ignisda2001@gmail.com"
   },
-  "description": "An NX plugin to manage rust projects",
-  "license": "MIT",
-  "name": "@ignisda/nx-rust",
-  "version": "14.5.3",
-  "main": "src/index.js",
-  "repository": {
-    "url": "https://github.com/ignisda/npm-libs"
-  },
-  "readme": "https://github.com/IgnisDa/npm-libs/blob/main/packages/nx-rust/README.md",
-  "generators": "./generators.json",
-  "executors": "./executors.json",
   "sideEffects": false,
+  "main": "src/index.js",
   "dependencies": {
     "@iarna/toml": "^2.2.5",
     "@swc/helpers": "^0.3.3",
     "chalk": "^4.1.2",
     "stream-chain": "^2.2.5",
     "stream-json": "^1.7.4"
-  }
+  },
+  "executors": "./executors.json",
+  "generators": "./generators.json",
+  "readme": "https://github.com/IgnisDa/npm-libs/blob/main/packages/nx-rust/README.md"
 }

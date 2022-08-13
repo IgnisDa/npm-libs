@@ -26,7 +26,7 @@ export async function loader({ request }: LoaderArgs) {
 export default function () {
   const { allPokemon, count } = useLoaderData<typeof loader>();
   return (
-    <div className="min-h-screen flex flex-col py-10">
+    <div className="flex flex-col mx-auto space-y-5">
       <h1 className="text-3xl text-center uppercase underline">Pokemon List</h1>
       <div className="flex-1 flex items-center justify-center">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 gap-x-10 gap-y-6 my-8 lg:my-0">

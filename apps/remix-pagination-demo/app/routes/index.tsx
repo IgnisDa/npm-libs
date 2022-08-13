@@ -31,23 +31,26 @@ const examples = [
 
 export default function Index() {
   return (
-    <div className="min-h-screen p-8 lg:p-20 flex">
-      <div className="w-full space-y-14">
-        <h1 className="text-gray-800 font-serif text-4xl underline lg:text-5xl text-center">
-          Remix Pagination Demo
-        </h1>
-        <div className="space-y-10">
-          {examples.map((e, idx) => (
-            <div key={idx} className="space-y-3">
-              <p className="text-lg lg:text-2xl">{e.name}</p>
-              {e.display}
-            </div>
-          ))}
-        </div>
-        <div className="text-center">
-          <h2 className="text-3xl">Example Page</h2>
-          <Link to={route('/pokemon')}>Pokemon</Link>
-        </div>
+    <div className="w-full space-y-14">
+      <h1 className="text-gray-800 font-serif text-4xl underline lg:text-5xl text-center">
+        Remix Pagination Demo
+      </h1>
+      <div className="space-y-10">
+        {examples.map((e, idx) => (
+          <div key={idx} className="space-y-3">
+            <p className="text-lg lg:text-2xl">{e.name}</p>
+            {e.display}
+          </div>
+        ))}
+      </div>
+      <div className="text-center">
+        <h2 className="text-3xl">Example Page</h2>
+        <Link
+          to={route('/pokemon')}
+          className="hover:text-blue-400 underline text-2xl"
+        >
+          Pokemon
+        </Link>
       </div>
     </div>
   );

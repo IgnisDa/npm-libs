@@ -2,6 +2,25 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.5.7](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.6...nx-rust-14.5.7) (2022-08-13)
+
+## [14.5.6](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.5...nx-rust-14.5.6) (2022-08-04)
+
+
+### Bug Fixes
+
+* **nx-rust:** add nextest executor ([f631d3a](https://github.com/IgnisDa/npm-libs/commit/f631d3afa0b3f30d4a424b92ae96c3982eeba5a7))
+* **nx-rust:** add watch options to all executors ([6ada46c](https://github.com/IgnisDa/npm-libs/commit/6ada46c59430074e87c83c90145108e5f9ec9f41))
+
+## [14.5.5](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.4...nx-rust-14.5.5) (2022-08-03)
+
+## [14.5.4](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.3...nx-rust-14.5.4) (2022-08-03)
+
+
+### Bug Fixes
+
+* **nx-rust:** use toml parser to create add members to workspace ([b81c535](https://github.com/IgnisDa/npm-libs/commit/b81c5357cbf60eb16f0b8a1802a5983db05bd14b))
+
 ## [14.5.3](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.2...nx-rust-14.5.3) (2022-08-03)
 
 

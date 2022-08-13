@@ -8,7 +8,7 @@ import {
 } from '../../common/schema';
 
 /**
- * Run tests for a particular project
+ * Run tests using nextest for a particular project
  */
 type Options = FeatureSelection &
   CompilationOptions &

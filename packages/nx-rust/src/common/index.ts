@@ -1,14 +1,14 @@
 import { parse as parseToml, stringify as stringifyToml } from '@iarna/toml';
 import {
-  ExecutorContext,
-  getWorkspaceLayout,
+  ExecutorContext as nrwlExecutorContext,
+  getWorkspaceLayout as nrwlGetWorkspaceLayout,
   names as nrwlNames,
-  Tree,
+  Tree as nrwlTree,
 } from '@nrwl/devkit';
 import * as chalk from 'chalk';
 import { spawn } from 'node:child_process';
 
-import { CARGO_TOML } from './constants';
+import { CARGO, CARGO_TOML, WATCH } from './constants';
 import {
   CompilationOptions,
   DisplayOptions,
@@ -56,16 +56,15 @@ interface Names {
 export function cargoNames(name: string): Names {
   const result = nrwlNames(name) as Names;
   result.snakeName = result.constantName.toLowerCase();
-
   return result;
 }
 
-export function normalizeGeneratorOptions<T extends GeneratorCLIOptions>(
+export const normalizeGeneratorOptions = <T extends GeneratorCLIOptions>(
   projectType: 'application' | 'library',
-  host: Tree,
+  host: nrwlTree,
   opts: T
-): T & GeneratorOptions {
-  const layout = getWorkspaceLayout(host);
+): T & GeneratorOptions => {
+  const layout = nrwlGetWorkspaceLayout(host);
   const names = cargoNames(opts.name);
   // let fileName = names.fileName;
   const moduleName = names.snakeName;
@@ -101,68 +100,36 @@ export function normalizeGeneratorOptions<T extends GeneratorCLIOptions>(
     parsedTags,
     edition,
   };
-}
+};
 
-export function updateWorkspaceMembers(host: Tree, opts: GeneratorOptions) {
+export const updateWorkspaceMembers = (
+  host: nrwlTree,
+  opts: GeneratorOptions
+) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const existingToml: any = parseToml(host.read(CARGO_TOML, 'utf-8'));
-  if (existingToml.workspace.members)
-    existingToml.workspace.members.push(opts.projectRoot);
+  existingToml.workspace.members.push(opts.projectRoot);
   const updated = stringifyToml(existingToml);
   host.write(CARGO_TOML, updated);
-}
+};
 
-export function parseCargoArgs(
+export const parseCargoArgs = (
   opts: CargoOptions,
-  ctx: ExecutorContext
-): string[] {
-  const args = [] as string[];
-
-  if (opts.toolchain) {
-    args.push(`+${opts.toolchain}`);
-  }
-
-  switch (ctx.targetName) {
-    case 'build':
-      args.push('build');
-      break;
-    case 'test':
-      args.push('test');
-      break;
-    case 'run':
-      args.push('run');
-      break;
-    default: {
-      if (ctx.targetName == null) {
-        throw new Error('Expected target name to be non-null');
-      } else {
-        throw new Error(
-          `Target '${ctx.targetName}' is invalid or not yet implemented`
-        );
-      }
-    }
-  }
-
-  if (!ctx.projectName) {
-    throw new Error('Expected project name to be non-null');
-  }
+  ctx: nrwlExecutorContext
+): string[] => {
+  const args = [];
+  if (opts.toolchain) args.push(`+${opts.toolchain}`);
+  if (!ctx.projectName) throw new Error('Expected project name to be non-null');
   if (
     ctx.targetName === 'build' &&
     ctx.workspace.projects[ctx.projectName].projectType === 'application'
-  ) {
+  )
     args.push('--bin');
-  } else {
-    args.push('-p');
-  }
+  else args.push('-p');
   args.push(ctx.projectName);
-
-  if (opts.features) {
-    if (opts.features === 'all') {
-      args.push('--all-features');
-    } else {
-      args.push('--features', opts.features);
-    }
-  }
-
+  if (opts.features)
+    if (opts.features === 'all') args.push('--all-features');
+    else args.push('--features', opts.features);
   if (opts.noDefaultFeatures) args.push('--no-default-features');
   if (opts.target) args.push('--target', opts.target);
   if (opts.release) args.push('--release');
@@ -177,7 +144,6 @@ export function parseCargoArgs(
           `but toolchain '${original}' was already specified. ` +
           `Overriding '${original}' => 'nightly'.`;
         console.log(`${label} ${message}`);
-
         args[0] = '+nightly';
       } else args.unshift('+nightly');
     }
@@ -191,13 +157,12 @@ export function parseCargoArgs(
   if (opts.frozen) args.push('--frozen');
   if (opts.offline) args.push('--offline');
   return args;
-}
+};
 
-export function runCargo(args: string[], ctx: ExecutorContext) {
-  console.log(chalk.dim(`> cargo ${args.join(' ')}`));
-
+export const runCargo = (args: string[], ctx: nrwlExecutorContext) => {
+  console.log('>', chalk.dim(`${CARGO} ${args.join(' ')}`));
   return new Promise<void>((resolve, reject) =>
-    spawn('cargo', args, {
+    spawn(CARGO, args, {
       cwd: ctx.root,
       shell: true,
       stdio: 'inherit',
@@ -208,4 +173,28 @@ export function runCargo(args: string[], ctx: ExecutorContext) {
         else resolve();
       })
   );
-}
+};
+
+/**
+ * Gets the cargo command to run from an executor. Eg: `@ignisda/nx-rust:nextest` =>
+ * `['nextest', 'run']`.
+ */
+export const getCargoCommandFromExecutor = (executor: string) => {
+  const target = executor.split(':').at(-1);
+  const toReturn = [];
+  if (target === 'build') toReturn.push('build');
+  else if (target === 'test') toReturn.push('test');
+  else if (target === 'clippy') toReturn.push('clippy');
+  else if (target === 'run') toReturn.push('run');
+  else if (target === 'nextest') toReturn.push('nextest', 'run');
+  return toReturn;
+};
+
+/**
+ * Takes an array of commands and wraps so that it is compatibly with cargo-watch. Eg:
+ * ['test', '-p', 'core'] => `['watch', '-cqs', '"cargo test -p core"']`.
+ */
+export const wrapWithCargoWatch = (command: string[]) => {
+  const wrappedCommand = '"' + [CARGO, ...command].join(' ') + '"';
+  return [WATCH, '-cqs', wrappedCommand];
+};

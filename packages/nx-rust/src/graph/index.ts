@@ -1,8 +1,4 @@
-import {
-  ProjectGraph,
-  ProjectGraphBuilder,
-  ProjectGraphProcessorContext,
-} from '@nrwl/devkit';
+import { ProjectGraph, ProjectGraphBuilder, ProjectGraphProcessorContext } from '@nrwl/devkit';
 import { execSync } from 'node:child_process';
 import { chain } from 'stream-chain';
 import { parser } from 'stream-json';

@@ -1,7 +1,9 @@
+import { WatchModeOptions } from '../../common/schema';
+
 /**
  * Run clippy for a particular project
  */
-export default interface Options {
+export default interface Options extends WatchModeOptions {
   /** Automatically fix code where possible. */
   fix?: boolean;
   /**
