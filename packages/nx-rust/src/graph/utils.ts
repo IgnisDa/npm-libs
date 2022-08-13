@@ -1,15 +1,13 @@
 import { Readable, Stream } from 'node:stream';
 
 /**
- * Get the normalized path to the file which gives equal paths regarless of the
- * operating systems.
+ * Get the normalized path to the file which gives equal paths regardless of the operating
+ * system.
  */
 export const normalizePath = (path: string, stripTrailing = false) => {
   if (path === '\\' || path === '/') return '/';
-
   const len = path.length;
   if (len <= 1) return path;
-
   let prefix = '';
   if (len > 4 && path[3] === '\\') {
     const ch = path[2];
@@ -18,11 +16,10 @@ export const normalizePath = (path: string, stripTrailing = false) => {
       prefix = '//';
     }
   }
-
-  const segs = path.split(/[/\\]+/);
-  if (stripTrailing !== false && segs[segs.length - 1] === '') 
-    segs.pop();
-  return prefix + segs.join('/');
+  const segments = path.split(/[/\\]+/);
+  if (stripTrailing !== false && segments[segments.length - 1] === '')
+    segments.pop();
+  return prefix + segments.join('/');
 };
 
 /**

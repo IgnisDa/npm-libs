@@ -6,7 +6,12 @@ import { pick } from 'stream-json/filters/Pick';
 import { streamValues } from 'stream-json/streamers/StreamValues';
 
 import { RUST } from '../common/constants';
-import { bufferToStream, longestCommonPrefix, normalizePath, pipelineToObject } from './utils';
+import {
+  bufferToStream,
+  longestCommonPrefix,
+  normalizePath,
+  pipelineToObject,
+} from './utils';
 
 export async function processProjectGraph(
   graph: ProjectGraph,
@@ -71,7 +76,6 @@ export async function processProjectGraph(
       const newManifestPath = normalizePath(
         pkg.manifest_path.replace(prefixPath, '')
       );
-      console.log(newManifestPath);
       builder.addExplicitDependency(
         pkg.name,
         newManifestPath,
