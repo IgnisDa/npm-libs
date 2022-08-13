@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.5.8](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.7...nx-rust-14.5.8) (2022-08-13)
+
+
+### Bug Fixes
+
+* **nx-rust:** add correct doc comments ([73b5433](https://github.com/IgnisDa/npm-libs/commit/73b5433791dbbdc77fbc37512bd0098397a3ba71))
+* **nx-rust:** normalize path across OS ([03ae1ee](https://github.com/IgnisDa/npm-libs/commit/03ae1eeaca2c4c8d03d4b2e924e8f0657b801700))
+* **nx-rust:** normalize path in project graph ([26e75a1](https://github.com/IgnisDa/npm-libs/commit/26e75a1c5bfbf402f26e4cd04a8a83aa78c627b6))
+
 ## [14.5.7](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.6...nx-rust-14.5.7) (2022-08-13)
 
 ## [14.5.6](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.5...nx-rust-14.5.6) (2022-08-04)
