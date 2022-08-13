@@ -1,6 +1,31 @@
 import { Readable, Stream } from 'node:stream';
 
 /**
+ * Get the normalized path to the file which gives equal paths regarless of the
+ * operating systems.
+ */
+export const normalizePath = (path: string, stripTrailing = false) => {
+  if (path === '\\' || path === '/') return '/';
+
+  const len = path.length;
+  if (len <= 1) return path;
+
+  let prefix = '';
+  if (len > 4 && path[3] === '\\') {
+    const ch = path[2];
+    if ((ch === '?' || ch === '.') && path.slice(0, 2) === '\\\\') {
+      path = path.slice(2);
+      prefix = '//';
+    }
+  }
+
+  const segs = path.split(/[/\\]+/);
+  if (stripTrailing !== false && segs[segs.length - 1] === '') 
+    segs.pop();
+  return prefix + segs.join('/');
+};
+
+/**
  * Extract the longest common prefix between an array of strings.
  * Ref: https://stackoverflow.com/a/68703218/11667450
  */
