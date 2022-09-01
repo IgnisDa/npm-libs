@@ -63,6 +63,16 @@
         "command": "pnpm run dev",
         "cwd": "apps/remix-pagination-demo"
       }
+    },
+    "start": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {},
+      "configurations": {
+        "production": {
+          "command": "npx remix-serve index.js",
+          "cwd": "dist/apps/remix-pagination-demo"
+        }
+      }
     }
   }
 }
