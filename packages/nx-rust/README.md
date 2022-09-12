@@ -4,11 +4,19 @@ This is a plugin for `@nrwl/nx` adding support for Rust applications and librari
 
 ## Installation
 
+Installing the correct version is important. Read [versioning](#versioning).
+
 ```bash
-pnpm install @ignisda/nx-rust@latest
+pnpm install --save-dev @ignisda/nx-rust@latest
 ```
 
-Installing the correct version is important. Read [versioning](#versioning).
+Then add the plugin to your `nx.json`:
+
+```json
+{
+  "plugins": ["@ignisda/nx-rust"]
+}
+```
 
 ## Generators
 
