@@ -1,9 +1,7 @@
 import { parse as parseToml, stringify as stringifyToml } from '@iarna/toml';
 import {
-  ExecutorContext as nrwlExecutorContext,
   getWorkspaceLayout as nrwlGetWorkspaceLayout,
   names as nrwlNames,
-  Tree as nrwlTree,
 } from '@nrwl/devkit';
 import * as chalk from 'chalk';
 import { spawn } from 'node:child_process';
@@ -16,6 +14,11 @@ import {
   ManifestOptions,
   OutputOptions,
 } from './schema';
+
+import type {
+  ExecutorContext as nrwlExecutorContext,
+  Tree as nrwlTree,
+} from '@nrwl/devkit';
 
 export interface GeneratorOptions {
   projectName: string;
@@ -115,17 +118,14 @@ export const updateWorkspaceMembers = (
 
 export const parseCargoArgs = (
   opts: CargoOptions,
-  ctx: nrwlExecutorContext
+  ctx: nrwlExecutorContext,
+  binTarget?: string
 ): string[] => {
   const args = [];
   if (opts.toolchain) args.push(`+${opts.toolchain}`);
   if (!ctx.projectName) throw new Error('Expected project name to be non-null');
-  if (
-    ctx.targetName === 'build' &&
-    ctx.workspace.projects[ctx.projectName].projectType === 'application'
-  )
-    args.push('--bin');
-  else args.push('-p');
+  if (opts.bin) args.push('--bin', binTarget);
+  args.push('--package');
   args.push(ctx.projectName);
   if (opts.features)
     if (opts.features === 'all') args.push('--all-features');

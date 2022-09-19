@@ -1,23 +1,17 @@
-import { ExecutorContext, Tree } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
-import {
-  CargoOptions,
-  normalizeGeneratorOptions,
-  parseCargoArgs,
-} from './index';
+import { CargoOptions, normalizeGeneratorOptions, parseCargoArgs } from '.';
+
+import type { ExecutorContext, Tree } from '@nrwl/devkit';
 
 describe('common utils', () => {
   describe('parseCargoArgs', () => {
     it('should support --target argument', () => {
       const ctx = mockExecutorContext('test-app:build');
       const opts: CargoOptions = { target: '86_64-pc-windows-gnu' };
-      const args = parseCargoArgs(opts, ctx);
+      const args = parseCargoArgs(opts, ctx, 'test-app');
       args.unshift('cargo');
-
-      expect(args.join(' ')).toEqual(
-        'cargo build --bin test-app --target 86_64-pc-windows-gnu'
-      );
+      expect(args.join(' ')).toContain('--target 86_64-pc-windows-gnu');
     });
   });
 

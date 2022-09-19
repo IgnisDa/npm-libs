@@ -16,6 +16,11 @@
       "schema": "./src/executors/nextest/schema.json",
       "description": "Run unit tests using nextest"
     },
+    "run": {
+      "implementation": "./src/executors/run/executor",
+      "schema": "./src/executors/run/schema.json",
+      "description": "Run a Cargo project binary"
+    },
     "test": {
       "implementation": "./src/executors/test/executor",
       "schema": "./src/executors/test/schema.json",
