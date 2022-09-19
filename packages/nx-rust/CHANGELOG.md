@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.6.0](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.9...nx-rust-14.6.0) (2022-09-19)
+
+
+### Features
+
+* **nx-rust:** add run executor ([95c3523](https://github.com/IgnisDa/npm-libs/commit/95c3523b0740cc1f52d30007b9b0850bd9d4af99))
+
 ## [14.5.9](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.8...nx-rust-14.5.9) (2022-09-12)
 
 ## [14.5.8](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.7...nx-rust-14.5.8) (2022-08-13)

@@ -1,6 +1,6 @@
 {
   "name": "@ignisda/nx-rust",
-  "version": "14.5.9",
+  "version": "14.6.0",
   "description": "An NX plugin to manage rust projects",
   "repository": {
     "type": "git",
