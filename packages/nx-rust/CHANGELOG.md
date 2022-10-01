@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.7.0](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.6.0...nx-rust-14.7.0) (2022-10-01)
+
+
+### Features
+
+* **nx-rust:** change logic to associate projects with each other ([499217a](https://github.com/IgnisDa/npm-libs/commit/499217ac863417b292d11080e949b561a9ef17f8))
+
 ## [14.6.0](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.5.9...nx-rust-14.6.0) (2022-09-19)
 
 
