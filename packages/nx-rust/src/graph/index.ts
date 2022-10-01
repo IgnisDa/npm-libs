@@ -9,13 +9,8 @@ import { parser } from 'stream-json';
 import { pick } from 'stream-json/filters/Pick';
 import { streamValues } from 'stream-json/streamers/StreamValues';
 
-import { RUST } from '../common/constants';
-import {
-  bufferToStream,
-  longestCommonPrefix,
-  normalizePath,
-  pipelineToObject,
-} from './utils';
+import { CARGO_TOML, RUST } from '../common/constants';
+import { bufferToStream, normalizePath, pipelineToObject } from './utils';
 
 export async function processProjectGraph(
   graph: ProjectGraph,
@@ -73,15 +68,16 @@ export async function processProjectGraph(
       const workspaceMember = filteredWorkspaceMembers.find(
         (fw) => fw.name === depName
       );
-      const prefixPath = longestCommonPrefix([
-        workspaceMember.manifest_path,
-        pkg.manifest_path,
-      ]);
+
+      // search for cargo.toml file in all the files of the source project
+      const cargoToml = ctx.fileMap[pkg.name].find((f) =>
+        f.file.includes(CARGO_TOML)
+      );
+
       // we need to normalize the path because of differences of the path separator in
       // windows operating systems
-      const newManifestPath = normalizePath(
-        pkg.manifest_path.replace(prefixPath, '')
-      );
+      const newManifestPath = normalizePath(cargoToml.file);
+
       builder.addExplicitDependency(
         pkg.name,
         newManifestPath,
