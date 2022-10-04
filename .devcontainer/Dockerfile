@@ -1,12 +1,21 @@
-ARG VARIANT=16
-FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
+FROM archlinux
 
-RUN su node -c "npm install -g yarn pnpm nx"
+ENV UUID=1000
+ENV GUID=${UUID}
+ENV USERNAME=vscode
 
+RUN pacman -Syyu --noconfirm reflector ;\
+    reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist ;\
+    pacman -S --noconfirm --needed base-devel git sudo
 
-# install the esteem cli to make it easier to manage nx monorepos
-RUN curl https://raw.githubusercontent.com/IgnisDa/developrs/main/packages/esteem/install.sh | sudo sh -s -- --yes ;\
-    # Install tokei to count code count
-    wget -O tokei.tar.gz https://github.com/XAMPPRocky/tokei/releases/latest/download/tokei-x86_64-unknown-linux-gnu.tar.gz ;\
-    tar xf tokei.tar.gz -C /usr/local/bin ;\
-    tokei --version
+RUN groupadd -g ${GUID} ${USERNAME} ; \
+    useradd -ms /bin/bash ${USERNAME} -u ${UUID} -g ${USERNAME} -g wheel ; \
+    echo "ALL ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} ;\
+    chmod 0440 /etc/sudoers.d/${USERNAME}
+
+RUN pacman -S --noconfirm nodejs npm fish curl wget
+
+RUN set -eu ;\
+    npm install --global pnpm
+
+USER $USERNAME

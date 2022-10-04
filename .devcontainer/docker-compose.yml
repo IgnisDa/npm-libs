@@ -8,4 +8,4 @@ services:
     volumes:
       - ..:/workspace:cached
     command: sleep infinity
-    user: node
+    user: vscode
