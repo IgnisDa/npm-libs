@@ -11,14 +11,11 @@ export interface ToolchainOptions {
 }
 
 export interface BinaryOptions {
-  /**
-   * The project binary to operate on.
-   *
-   * By default this will be set to the name of the project that the executor is being run
-   * for. If an array is passed, then the command will be called many times for each `bin`
-   * target.
-   */
-  bin?: string | string[];
+  /** The project binary to operate on. */
+  bin?: string;
+
+  /* Build all binary targets. */
+  bins?: boolean;
 }
 
 export interface CompilationOptions {

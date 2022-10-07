@@ -127,6 +127,7 @@ export const parseCargoArgs = (
   if (opts.toolchain) args.push(`+${opts.toolchain}`);
   if (!ctx.projectName) throw new Error('Expected project name to be non-null');
   if (opts.bin) args.push('--bin', binTarget);
+  if (opts.bins) args.push('--bins');
   args.push('--package');
   args.push(ctx.projectName);
   if (opts.features)
