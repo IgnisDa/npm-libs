@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.8.0](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.7.0...nx-rust-14.8.0) (2022-10-07)
+
+
+### Features
+
+* **nx-rust:** add support for multiple binary targets ([68ad0c8](https://github.com/IgnisDa/npm-libs/commit/68ad0c82b2c637d6824dd98f0fc2655bc2ac62be))
+
 ## [14.7.0](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.6.0...nx-rust-14.7.0) (2022-10-01)
 
 
