@@ -22,6 +22,7 @@
         "nextest",
         "nrwl",
         "pnpm",
+        "rustc",
         "rustfmt",
         "swcrc",
         "tailwindcss",

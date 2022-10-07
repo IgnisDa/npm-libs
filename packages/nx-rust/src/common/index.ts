@@ -8,15 +8,17 @@ import { spawn } from 'node:child_process';
 
 import { CARGO, CARGO_TOML, WATCH } from './constants';
 import {
+  BinaryOptions,
   CompilationOptions,
   DisplayOptions,
   FeatureSelection,
   ManifestOptions,
   OutputOptions,
+  ToolchainOptions,
 } from './schema';
 
 import type {
-  ExecutorContext as nrwlExecutorContext,
+  ExecutorContext as NxExecutorContext,
   Tree as nrwlTree,
 } from '@nrwl/devkit';
 
@@ -34,11 +36,10 @@ export type CargoOptions = Partial<
     CompilationOptions &
     OutputOptions &
     DisplayOptions &
-    ManifestOptions
-> & {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
-};
+    ManifestOptions &
+    ToolchainOptions &
+    BinaryOptions
+>;
 
 interface GeneratorCLIOptions {
   name: string;
@@ -116,9 +117,10 @@ export const updateWorkspaceMembers = (
   host.write(CARGO_TOML, updated);
 };
 
+/* Parse cargo arguments and return the final command to be run */
 export const parseCargoArgs = (
   opts: CargoOptions,
-  ctx: nrwlExecutorContext,
+  ctx: NxExecutorContext,
   binTarget?: string
 ): string[] => {
   const args = [];
@@ -134,21 +136,6 @@ export const parseCargoArgs = (
   if (opts.target) args.push('--target', opts.target);
   if (opts.release) args.push('--release');
   if (opts.targetDir) args.push('--target-dir', opts.targetDir);
-  if (opts.outDir) {
-    if (args[0] !== '+nightly') {
-      if (args[0].startsWith('+')) {
-        const label = chalk.bold.yellowBright.inverse(' WARNING ');
-        const original = args[0].replace(/^\+/, '');
-        const message =
-          `'outDir' option can only be used with 'nightly' toolchain, ` +
-          `but toolchain '${original}' was already specified. ` +
-          `Overriding '${original}' => 'nightly'.`;
-        console.log(`${label} ${message}`);
-        args[0] = '+nightly';
-      } else args.unshift('+nightly');
-    }
-    args.push('-Z', 'unstable-options', '--out-dir', opts.outDir);
-  }
   if (opts.verbose) args.push('-v');
   if (opts.veryVerbose) args.push('-vv');
   if (opts.quiet) args.push('-q');
@@ -159,7 +146,7 @@ export const parseCargoArgs = (
   return args;
 };
 
-export const runCargo = (args: string[], ctx: nrwlExecutorContext) => {
+export const runCargo = (args: string[], ctx: NxExecutorContext) => {
   console.log('>', chalk.dim(`${CARGO} ${args.join(' ')}`));
   return new Promise<void>((resolve, reject) =>
     spawn(CARGO, args, {
@@ -177,7 +164,7 @@ export const runCargo = (args: string[], ctx: nrwlExecutorContext) => {
 
 /**
  * Gets the cargo command to run from an executor. Eg: `@ignisda/nx-rust:nextest` =>
- * `['nextest', 'run']`.
+ * `['nextest', 'run']`, `@ignisda/nx-rust:build` => `['build']` etc.
  */
 export const getCargoCommandFromExecutor = (executor: string) => {
   const target = executor.split(':').at(-1);

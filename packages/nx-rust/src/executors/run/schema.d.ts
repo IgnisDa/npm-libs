@@ -5,6 +5,7 @@ import type {
   OutputOptions,
   ManifestOptions,
   WatchModeOptions,
+  BinaryOptions,
 } from '../../common/schema';
 
 /**
@@ -15,14 +16,7 @@ type Options = FeatureSelection &
   OutputOptions &
   DisplayOptions &
   ManifestOptions &
-  WatchModeOptions & {
-    /**
-     * The project binary to run.
-     *
-     * By default this will be set to the name of the project that the executor is being
-     * run for.
-     */
-    bin?: string;
-  };
+  WatchModeOptions &
+  BinaryOptions;
 
 export default Options;

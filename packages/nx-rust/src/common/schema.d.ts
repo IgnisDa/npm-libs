@@ -5,6 +5,22 @@ export interface FeatureSelection {
   noDefaultFeatures?: boolean;
 }
 
+export interface ToolchainOptions {
+  /* Use this rustc toolchain for the command */
+  toolchain?: string;
+}
+
+export interface BinaryOptions {
+  /**
+   * The project binary to operate on.
+   *
+   * By default this will be set to the name of the project that the executor is being run
+   * for. If an array is passed, then the command will be called many times for each `bin`
+   * target.
+   */
+  bin?: string | string[];
+}
+
 export interface CompilationOptions {
   /**
    * Build for the given architecture. The default is the host architecture. The general
