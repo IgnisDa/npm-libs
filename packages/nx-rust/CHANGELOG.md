@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.8.1](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.8.0...nx-rust-14.8.1) (2022-10-07)
+
+
+### Bug Fixes
+
+* **nx-rust:** add --bins flag for binary compilations ([2e5e346](https://github.com/IgnisDa/npm-libs/commit/2e5e3462245cdd64a2c23d97bbed1cd86b1807e6))
+
 ## [14.8.0](https://github.com/IgnisDa/npm-libs/compare/nx-rust-14.7.0...nx-rust-14.8.0) (2022-10-07)
 
 
