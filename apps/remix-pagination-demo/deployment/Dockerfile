@@ -4,16 +4,16 @@ ENV PROJECT_NAME=remix-pagination-demo \
 
 FROM base AS builder
 RUN apk add --no-cache curl g++ make py3-pip && \
-    yarn global add pnpm@7.5.0 && \
+    yarn global add pnpm@7.5.0 nx@14.5.1 && \
     wget https://github.com/IgnisDa/developrs/releases/download/esteem-v1.1.8/esteem-v1.1.8-x86_64-unknown-linux-musl.tar.gz && \
-    tar -xzf esteem-v1.1.8-x86_64-unknown-linux-musl && \
+    tar -xzf esteem-v1.1.8-x86_64-unknown-linux-musl.tar.gz && \
     mv esteem-v1.1.8-x86_64-unknown-linux-musl/esteem  /usr/bin
 WORKDIR /app
 COPY package.json pnpm-lock.yaml .npmrc ./
 RUN pnpm install --frozen-lockfile --ignore-scripts
 COPY . .
-RUN esteem install-isolated -C $(echo $(node ./deployment/get-project-deps.mjs ${PROJECT_NAME}))
-RUN pnpm nx build ${PROJECT_NAME}
+RUN esteem install-isolated remix-pagination-demo
+RUN nx build ${PROJECT_NAME}
 RUN pnpm install --production --ignore-scripts --prefer-offline
 
 # Production image, copy required files and run server
