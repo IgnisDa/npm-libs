@@ -26,9 +26,14 @@ export default function App() {
       <head>
         <Meta />
         <Links />
+        <script
+          defer
+          data-domain="remix-pagination.ignisda.tech"
+          src="https://plausible.ignisda.tech/js/script.js"
+        />
       </head>
-      <body className="min-h-screen flex flex-col">
-        <div className="p-8 lg:p-20 flex flex-1">
+      <body className="flex flex-col min-h-screen">
+        <div className="flex flex-1 p-8 lg:p-20">
           <Outlet />
         </div>
         <ScrollRestoration />
