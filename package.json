@@ -3,8 +3,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
-    "commit": "git-cz",
-    "postinstall": "remix setup node"
+    "commit": "git-cz"
   },
   "version": "0.0.0",
   "private": true,
@@ -27,7 +26,7 @@
     "@nrwl/remix": "14.4.2",
     "@nrwl/web": "14.5.1",
     "@nrwl/workspace": "14.5.1",
-    "@remix-run/dev": "1.6.5",
+    "@remix-run/dev": "1.8.0",
     "@swc-node/register": "1.4.2",
     "@swc/cli": "0.1.55",
     "@swc/core": "1.2.173",
@@ -80,10 +79,10 @@
     "@graphql-codegen/typescript-generic-sdk": "2.4.2",
     "@graphql-codegen/typescript-operations": "2.5.2",
     "@iarna/toml": "2.2.5",
-    "@remix-run/eslint-config": "1.6.5",
-    "@remix-run/node": "1.6.5",
-    "@remix-run/react": "1.6.5",
-    "@remix-run/serve": "1.6.5",
+    "@remix-run/eslint-config": "1.8.0",
+    "@remix-run/node": "1.8.0",
+    "@remix-run/react": "1.8.0",
+    "@remix-run/serve": "1.8.0",
     "@routes-gen/remix": "0.3.0",
     "@swc/helpers": "0.3.3",
     "@types/lodash": "4.14.182",
@@ -109,9 +108,6 @@
     "urql": "2.2.2",
     "urql-generic-requester": "0.0.1"
   },
-  "workspaces": [
-    "packages/**"
-  ],
   "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
