@@ -39,7 +39,7 @@ pnpm install @ignisda/remix-pagination
 
 ## Example
 
-You can view the live example on [this](https://remix-pagination.ignisda.tech/) link.
+You can view the live example on [this](https://remix-pagination.diptesh.me) link.
 
 The source code of the above website is here:
 [remix-pagination-demo](../../apps/remix-pagination-demo). This app contains an example
