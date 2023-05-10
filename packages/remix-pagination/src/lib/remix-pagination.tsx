@@ -3,7 +3,6 @@ import {
   BsChevronLeft as PreviousIcon,
   BsChevronRight as NextIcon,
 } from 'react-icons/bs';
-import { withQuery } from 'ufo';
 
 import { Item as ItemComponent } from './components/Item';
 import { Link as LinkComponent } from './components/Link';
@@ -59,9 +58,8 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
 }) => {
   const [params] = useSearchParams();
 
-  const query = Object.fromEntries(params.entries());
 
-  const currentPage = Number(query[pageQuery] || 1);
+  const currentPage = Number(params.has(pageQuery) ? params.get(pageQuery) : 1);
 
   const isLastPage = currentPage * size >= total;
   const pageNumbers = getPageNumbers({
@@ -71,8 +69,12 @@ export const RemixPagination: FC<RemixPaginationProps> = ({
     ellipsesText,
   });
 
-  const url = (page: string | number) =>
-    withQuery('', { ...query, [pageQuery]: page.toString() });
+
+  const url = (page: string | number) => {
+      const pageParams = new URLSearchParams(params)
+      pageParams.set(pageQuery,page.toString())
+      return '?'+pageParams.toString()
+    };
 
   if (pageNumbers.length === 0) return null;
 

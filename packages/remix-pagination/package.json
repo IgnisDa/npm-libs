@@ -15,8 +15,7 @@
   "sideEffects": false,
   "dependencies": {
     "clsx": "~1.0.0",
-    "react-icons": "~4.0.0",
-    "ufo": "~0.8.0"
+    "react-icons": "~4.0.0"
   },
   "peerDependencies": {
     "@remix-run/react": "^1.8.0"
